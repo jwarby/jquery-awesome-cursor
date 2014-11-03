@@ -1,0 +1,47 @@
+{
+  "name": "jquery-awesome-cursor",
+  "version": "0.0.0",
+  "description": "jQuery plugin for using FontAwesome icons as custom CSS cursors",
+  "keywords": [
+    "jquery-plugin",
+    "fontawesome",
+    "cursor",
+    "custom",
+    "css"
+  ],
+  "homepage": "https://jwarby.github.io/jquery-awesome-cursor",
+  "bugs": "http://github.com/jwarby/jquery-awesome-cursor/issues",
+  "author": {
+    "name": "James Warwood",
+    "email": "james.duncan.1991@googlemail.com",
+    "url": "https://github.com/jwarby"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwarby/jquery-awesome-cursor.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "private": true,
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-qunit": "~0.5.1",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.8.0",
+    "time-grunt": "~0.3.2",
+    "load-grunt-tasks": "~0.6.0",
+    "jshint-stylish": "~0.2.0",
+    "grunt": "~0.4.5",
+    "grunt-unified-manifest": "git://github.com/jwarby/grunt-unified-manifest.git"
+  },
+  "peerDependencies": {
+    "font-awesome": "^4.2.0",
+    "jquery": "^2.1.1"
+  }
+}
