@@ -28,18 +28,18 @@
   "private": true,
   "devDependencies": {
     "bower": "^1.3.12",
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-connect": "^0.9.0",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-qunit": "~0.5.1",
-    "grunt-contrib-concat": "~0.4.0",
-    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-connect": "~0.8.0",
-    "time-grunt": "~0.3.2",
-    "load-grunt-tasks": "~0.6.0",
-    "jshint-stylish": "~0.2.0",
-    "grunt": "~0.4.5",
-    "grunt-unified-manifest": "git://github.com/jwarby/grunt-unified-manifest.git"
+    "grunt-unified-manifest": "git://github.com/jwarby/grunt-unified-manifest.git",
+    "jshint-stylish": "^1.0.0",
+    "load-grunt-tasks": "^1.0.0",
+    "time-grunt": "^1.0.0"
   },
   "peerDependencies": {
     "font-awesome": "^4.2.0",
