@@ -188,4 +188,5 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 - Support for composite cursors made of up of multiple icons, a la FontAwesome stacked icons (under consideration)
 
 ## Release History
-_(Nothing yet)_
+
+- `v0.0.1` - `10th Nov 2014` - First version
