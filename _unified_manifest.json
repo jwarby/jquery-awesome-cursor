@@ -51,7 +51,7 @@
     }
   },
   "_bower.json_": {
-    "main": "dist/jquery.awesome-cursor.j",
+    "main": "dist/jquery.awesome-cursor.js",
     "ignore": [
       "**/.*",
       "node_modules",
