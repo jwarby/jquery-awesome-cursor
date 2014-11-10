@@ -44,5 +44,8 @@
   "peerDependencies": {
     "font-awesome": "^4.2.0",
     "jquery": "^2.1.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   }
 }
