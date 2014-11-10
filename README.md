@@ -6,6 +6,8 @@
 
 A jQuery plugin for using FontAwesome icons as custom CSS cursors.
 
+See <https://jwarby.github.io/jquery-awesome-cursor/> for the full documentation and demos.
+
 ```javascript
 $('body').awesomeCursor('pencil');
 ```
@@ -19,25 +21,25 @@ Requires [jQuery](http://jquery.com) and [FontAwesome](http://fontawesome.io).
 #### via `bower`: Easiest
 
 ```shell
-bower install awesome-cursor
+bower install jquery-awesome-cursor
 ```
 
 ```html
 <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" type="text/css">
 <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-<script src="bower_components/awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
+<script src="bower_components/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
 ```
 
 #### via `npm`: Easier
 
 ```shell
-npm install awesome-cursor
+npm install jquery-awesome-cursor
 ```
 
 ```html
-<link rel="stylesheet" href="/path/to/font-awesome.min.css" type="text/css">
-<script src="/path/to/jquery.min.js" type="text/javascript"></script>
-<script src="node_modules/awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" type="text/css">
+<script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="node_modules/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
 ```
 
 #### manual installation
@@ -52,7 +54,7 @@ In your web page:
 ```html
 <link rel="stylesheet" href="/path/to/font-awesome.min.css" type="text/css">
 <script src="/path/to/jquery.js"></script>
-<script src="path/to/awesome-cursor.min.js"></script>
+<script src="path/to/jquery.awesome-cursor.min.js"></script>
 ```
 ## Documentation
 
@@ -180,7 +182,10 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 ## Roadmap
 
 - Allow cursors to be flipped (vertically and/or horizontally) and rotated by an abitrary number of degrees
-- Support for composite cursors made of up of multiple icons, a la FontAwesome stacked icons (?)
+- Optional outlines for cursors
+- IE11 support (if possible)
+- Data API (under consideration)
+- Support for composite cursors made of up of multiple icons, a la FontAwesome stacked icons (under consideration)
 
 ## Release History
 _(Nothing yet)_
