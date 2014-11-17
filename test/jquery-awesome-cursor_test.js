@@ -336,4 +336,52 @@
           start();
       });
   }, true);
+
+  browserOnlyTest('can flip a cursor horizontally', function() {
+    expect(1);
+
+    $('body')
+      .awesomeCursor('pencil', {
+        color: 'red',
+        size: 18,
+        flip: 'horizontal'
+      })
+      .cursorMatchesImage(
+        'expected/red-pencil-flip-h-18.png', function(matches) {
+          ok(matches);
+          start();
+      });
+  }, true);
+
+  browserOnlyTest('can flip a cursor vertically', function() {
+    expect(1);
+
+    $('body')
+      .awesomeCursor('flag-checkered', {
+        color: '#00ff00',
+        size: 18,
+        flip: 'vertical'
+      })
+      .cursorMatchesImage(
+        'expected/lime-flag-flip-v-18.png', function(matches) {
+          ok(matches);
+          start();
+      });
+  }, true);
+
+  browserOnlyTest('can flip a cursor vertically and horizontally', function() {
+    expect(1);
+
+    $('body')
+      .awesomeCursor('globe', {
+        color: 'black',
+        size: 32,
+        flip: 'both'
+      })
+      .cursorMatchesImage(
+        'expected/black-globe-flip-b-32.png', function(matches) {
+          ok(matches);
+          start();
+      });
+  }, true);
 }(this, jQuery));

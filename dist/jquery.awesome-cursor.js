@@ -1,4 +1,4 @@
-/*! jquery-awesome-cursor - v0.0.0 - 2014-11-10
+/*! jquery-awesome-cursor - v0.0.1 - 2014-11-17
 * https://jwarby.github.io/jquery-awesome-cursor
 * Copyright (c) 2014 James Warwood; Licensed MIT */
 ;(function(global, factory) {
@@ -118,6 +118,17 @@
 
       context = canvas.getContext('2d');
 
+      // Check flip option
+      if (options.flip === 'horizontal' || options.flip === 'both') {
+        context.translate(canvas.width, 0);//canvas.height / 2);
+        context.scale(-1, 1);
+      }
+
+      if (options.flip === 'vertical' || options.flip === 'both') {
+        context.translate(0, canvas.height);
+        context.scale(1, -1);
+      }
+
       context.fillStyle = options.color;
       context.font = options.size + 'px FontAwesome';
       context.textAlign = 'center';
@@ -143,6 +154,7 @@
   $.fn.awesomeCursor.defaults = {
     color: '#000000',
     size: 18,
-    hotspot: [0, 0]
+    hotspot: [0, 0],
+    flip: ''
   };
 });
