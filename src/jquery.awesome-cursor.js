@@ -115,6 +115,17 @@
 
       context = canvas.getContext('2d');
 
+      // Check flip option
+      if (options.flip === 'horizontal' || options.flip === 'both') {
+        context.translate(canvas.width, 0);//canvas.height / 2);
+        context.scale(-1, 1);
+      }
+
+      if (options.flip === 'vertical' || options.flip === 'both') {
+        context.translate(0, canvas.height);
+        context.scale(1, -1);
+      }
+
       context.fillStyle = options.color;
       context.font = options.size + 'px FontAwesome';
       context.textAlign = 'center';
@@ -140,6 +151,7 @@
   $.fn.awesomeCursor.defaults = {
     color: '#000000',
     size: 18,
-    hotspot: [0, 0]
+    hotspot: [0, 0],
+    flip: ''
   };
 });

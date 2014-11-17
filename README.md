@@ -147,6 +147,42 @@ The descriptors can be combined by space-separating them, e.g.:
 - `'top right'`
 - etc.
 
+#### Flip
+
+Cursors can be flipped horizontally, vertically, or in both directions, by setting the `flip` option:
+
+```javascript
+// Horizontal flip
+$('body').awesomeCursor('pencil', {
+  flip: 'horizontal'
+});
+
+// Vertical flip
+$('body').awesomeCursor('pencil', {
+  flip: 'vertical'
+});
+
+// Horizontal and Vertical flip
+$('body').awesomeCursor('pencil', {
+  flip: 'both'
+});
+```
+
+```javascript
+$('body').awesomeCursor('pencil', {
+  hotspot: [0, 17]
+});
+```
+
+Or, using a string descriptor:
+
+```javascript
+$('body').awesomeCursor('pencil', {
+  hotspot: 'bottom left'
+});
+```
+
+
 ## Examples
 
 ```javascript
@@ -163,6 +199,14 @@ $('body').awesomeCursor('location-arrow', {
   color: '#0050FF',
   hotspot: 'top right',
   size: 48
+});
+
+// Set the cursor to be a horizontally flipped version of the location arrow
+$('body').awesomeCursor('location-arrow', {
+  color: '#0050FF',
+  hotspot: 'top right',
+  size: 48,
+  flip: 'horizontal'
 });
 ```
 
@@ -189,4 +233,5 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
+- `v0.0.2` - `17th Nov 2014` - Add the `flip` option to allow cursors to be flipped horizontally, vertically, or in both directions
 - `v0.0.1` - `10th Nov 2014` - First version
