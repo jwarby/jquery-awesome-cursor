@@ -168,21 +168,6 @@ $('body').awesomeCursor('pencil', {
 });
 ```
 
-```javascript
-$('body').awesomeCursor('pencil', {
-  hotspot: [0, 17]
-});
-```
-
-Or, using a string descriptor:
-
-```javascript
-$('body').awesomeCursor('pencil', {
-  hotspot: 'bottom left'
-});
-```
-
-
 ## Examples
 
 ```javascript
