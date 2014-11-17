@@ -233,4 +233,5 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
+- `v0.0.2` - `17th Nov 2014` - Add the `flip` option to allow cursors to be flipped horizontally, vertically, or in both directions
 - `v0.0.1` - `10th Nov 2014` - First version
