@@ -182,11 +182,6 @@ $('body').awesomeCursor('pencil', {
 $('body').awesomeCursor('pencil', {
   rotate: -105
 });
-
-// Horizontal and Vertical flip
-$('body').awesomeCursor('pencil', {
-  flip: 'both'
-});
 ```
 
 ## Examples
