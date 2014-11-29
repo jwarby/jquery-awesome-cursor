@@ -168,6 +168,27 @@ $('body').awesomeCursor('pencil', {
 });
 ```
 
+#### Rotate
+
+A cursor can be rotated any number of degrees using the `rotate` option:
+
+```javascript
+// 45 degrees clockwise
+$('body').awesomeCursor('pencil', {
+  rotate: 45
+});
+
+// 105 degrees anti-clockwise
+$('body').awesomeCursor('pencil', {
+  rotate: -105
+});
+
+// Horizontal and Vertical flip
+$('body').awesomeCursor('pencil', {
+  flip: 'both'
+});
+```
+
 ## Examples
 
 ```javascript
@@ -218,6 +239,8 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
-- `v0.0.3` - `17th Nov 2014` - fix an error in the README file
+- `v0.0.4` - `29th Nov 2014` - Add `rotate` option for rotating cursor by a specified number of degrees.  Flip transformation now
+  applied after other transformations (e.g. rotate)
+- `v0.0.3` - `17th Nov 2014` - Fix an error in the README file
 - `v0.0.2` - `17th Nov 2014` - Add the `flip` option to allow cursors to be flipped horizontally, vertically, or in both directions
 - `v0.0.1` - `10th Nov 2014` - First version

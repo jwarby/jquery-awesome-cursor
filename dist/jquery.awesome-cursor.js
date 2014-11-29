@@ -1,4 +1,4 @@
-/*! jquery-awesome-cursor - v0.0.3 - 2014-11-17
+/*! jquery-awesome-cursor - v0.0.4 - 2014-11-29
 * https://jwarby.github.io/jquery-awesome-cursor
 * Copyright (c) 2014 James Warwood; Licensed MIT */
 ;(function(global, factory) {
@@ -74,6 +74,47 @@
     return [xOffset, yOffset];
   };
 
+  /**
+   * Returns a new canvas with the same contents as `canvas`, flipped
+   * accordingly.
+   *
+   * @param {Canvas} canvas     The canvas to flip
+   * @param {String} direction  The direction flip the canvas in.  Can be one
+   *                            of:
+   *                              - 'horizontal'
+   *                              - 'vertical'
+   *                              - 'both'
+   *
+   * @return {Canvas} a new canvas with the flipped contents of the input canvas
+   */
+  function flipCanvas(canvas, direction) {
+    if ($.inArray(direction, ['horizontal', 'vertical', 'both']) === -1) {
+      $.error('Flip value must be one of horizontal, vertical or both');
+    }
+
+    var flippedCanvas = $('<canvas />')[0],
+      flippedContext;
+
+    flippedCanvas.width = canvas.width;
+    flippedCanvas.height = canvas.height;
+
+    flippedContext = flippedCanvas.getContext('2d');
+
+    if (direction === 'horizontal' || direction === 'both') {
+      flippedContext.translate(canvas.width, 0);
+      flippedContext.scale(-1, 1);
+    }
+
+    if (direction === 'vertical' || direction === 'both') {
+      flippedContext.translate(0, canvas.height);
+      flippedContext.scale(1, -1);
+    }
+
+    flippedContext.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+
+    return flippedCanvas;
+  }
+
   $.fn.extend({
     awesomeCursor: function(iconName, options) {
       options = $.extend({}, $.fn.awesomeCursor.defaults, options);
@@ -99,9 +140,8 @@
           style: 'position: absolute; left: -9999px; top: -9999px;'
         }),
         canvas = $('<canvas />')[0],
-        unicode,
-        dataURL,
-        context;
+        canvasSize = options.size,
+        hotspotOffset, unicode, dataURL, context;
 
       // Render element to the DOM, otherwise `getComputedStyle` will not work
       $('body').append(srcElement);
@@ -113,27 +153,49 @@
       // Remove the source element from the DOM
       srcElement.remove();
 
-      canvas.height = options.size;
-      canvas.width = options.size;
+      if (options.rotate) {
 
-      context = canvas.getContext('2d');
+        // @TODO: move this into it's own function
+        canvasSize = Math.ceil(Math.sqrt(
+          Math.pow(options.size, 2) + Math.pow(options.size, 2)
+        ));
 
-      // Check flip option
-      if (options.flip === 'horizontal' || options.flip === 'both') {
-        context.translate(canvas.width, 0);//canvas.height / 2);
-        context.scale(-1, 1);
+        hotspotOffset = (canvasSize - options.size) / 2;
+        canvas.width = canvasSize;
+        canvas.height = canvasSize;
+
+        context = canvas.getContext('2d');
+        context.translate(canvas.width / 2, canvas.height / 2);
+
+        // Canvas API works in radians, not degrees, hence `* Math.PI / 180`
+        context.rotate(options.rotate * Math.PI / 180);
+        context.translate(-canvas.width / 2, -canvas.height / 2);
+
+        // Translate hotspot offset
+        options.hotspot[0] += options.hotspot[0] !== canvas.width / 2 ?
+            hotspotOffset : 0;
+
+        options.hotspot[1] += options.hotspot[1] !== canvas.height / 2 ?
+            hotspotOffset : 0;
+      } else {
+
+        canvas.height = options.size;
+        canvas.width = options.size;
+
+        context = canvas.getContext('2d');
       }
 
-      if (options.flip === 'vertical' || options.flip === 'both') {
-        context.translate(0, canvas.height);
-        context.scale(1, -1);
-      }
-
+      // Draw the cursor to the canvas
       context.fillStyle = options.color;
       context.font = options.size + 'px FontAwesome';
       context.textAlign = 'center';
       context.textBaseline = 'middle';
-      context.fillText(unicode, options.size / 2, options.size / 2);
+      context.fillText(unicode, canvasSize / 2, canvasSize / 2);
+
+      // Check flip option
+      if (options.flip) {
+        canvas = flipCanvas(canvas, options.flip);
+      }
 
       dataURL = canvas.toDataURL('image/png');
 
@@ -155,6 +217,7 @@
     color: '#000000',
     size: 18,
     hotspot: [0, 0],
-    flip: ''
+    flip: '',
+    rotate: 0
   };
 });
