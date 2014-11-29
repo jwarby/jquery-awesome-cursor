@@ -384,4 +384,87 @@
           start();
       });
   }, true);
+
+  browserOnlyTest('can rotate a cursor', function() {
+    expect(2);
+
+    var next = function() {
+      $('body').awesomeCursor('wrench', {
+        color: 'red',
+        size: '32px',
+        rotate: -45
+      }).cursorMatchesImage(
+        'expected/red-wrench-rotate-45.png', function(matches) {
+          ok(matches);
+          start();
+        }
+      );
+    };
+
+    $('body').awesomeCursor('pencil', {
+      color: 'black',
+      size: '32px',
+      rotate: 45
+    }).cursorMatchesImage(
+      'expected/black-pencil-rotate45.png', function(matches) {
+        ok(matches);
+        next();
+      }
+    );
+
+  }, true);
+
+  browserOnlyTest('can rotate and flip a cursor', function() {
+    expect(2);
+
+    var next = function() {
+      $('body').awesomeCursor('pencil', {
+        color: 'green',
+        size: '32px',
+        rotate: 45,
+        flip: 'both'
+      }).cursorMatchesImage(
+        'expected/green-pencil-rotate45-flip-b.png', function(matches) {
+          ok(matches);
+          start();
+        }
+      );
+    };
+
+    $('body').awesomeCursor('pencil', {
+      color: 'green',
+      size: '32px',
+      rotate: 45,
+      flip: 'horizontal'
+    }).cursorMatchesImage(
+      'expected/green-pencil-rotate45-flip-h.png', function(matches) {
+        ok(matches);
+        next();
+      }
+    );
+
+  }, true);
+
+  browserOnlyTest('hotspot gets translated when cursor rotated', function() {
+    var size = $.fn.awesomeCursor.defaults.size,
+      newSize = Math.ceil(Math.sqrt(
+        Math.pow(size, 2) + Math.pow(size, 2)
+      )),
+      subjects = {
+        45: [(newSize - size) / 2, (size / 2) + (newSize - size) / 2]
+      },
+      hotspot;
+
+    expect(Object.keys(subjects).length);
+
+    for (var s in subjects) {
+      this.elems.awesomeCursor('pencil', {
+        hotspot: 'center left',
+        rotate: s
+      });
+
+      hotspot = extractHotspot(this.elems);
+      deepEqual(hotspot, subjects[s]);
+    }
+  });
 }(this, jQuery));
