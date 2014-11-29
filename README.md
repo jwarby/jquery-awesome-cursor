@@ -168,21 +168,6 @@ $('body').awesomeCursor('pencil', {
 });
 ```
 
-```javascript
-$('body').awesomeCursor('pencil', {
-  hotspot: [0, 17]
-});
-```
-
-Or, using a string descriptor:
-
-```javascript
-$('body').awesomeCursor('pencil', {
-  hotspot: 'bottom left'
-});
-```
-
-
 ## Examples
 
 ```javascript
@@ -233,4 +218,6 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
+- `v0.0.3` - `17th Nov 2014` - fix an error in the README file
+- `v0.0.2` - `17th Nov 2014` - Add the `flip` option to allow cursors to be flipped horizontally, vertically, or in both directions
 - `v0.0.1` - `10th Nov 2014` - First version
