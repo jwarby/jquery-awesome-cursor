@@ -226,7 +226,8 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Roadmap
 
-- Allow cursors to be flipped (vertically and/or horizontally) and rotated by an abitrary number of degrees
+- ~~Allow cursors to be flipped vertically and/or horizontally~~ [&#10004; v0.0.2](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.2)
+- ~~Allow cursors to be rotated by an abitrary number of degrees~~ [&#10004; v0.0.4](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.4)
 - Optional outlines for cursors
 - IE11 support (if possible)
 - Data API (under consideration)
