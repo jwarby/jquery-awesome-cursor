@@ -168,20 +168,37 @@ $('body').awesomeCursor('pencil', {
 });
 ```
 
+#### Rotate
+
+A cursor can be rotated any number of degrees using the `rotate` option:
+
 ```javascript
+// 45 degrees clockwise
 $('body').awesomeCursor('pencil', {
-  hotspot: [0, 17]
+  rotate: 45
+});
+
+// 105 degrees anti-clockwise
+$('body').awesomeCursor('pencil', {
+  rotate: -105
 });
 ```
 
-Or, using a string descriptor:
+#### Outline
+
+A cursor can be outlined in any color by setting the `outline` option to any valid CSS color:
 
 ```javascript
+// Red outline
 $('body').awesomeCursor('pencil', {
-  hotspot: 'bottom left'
+  outline: 'red'
+});
+
+// White outline
+$('body').awesomeCursor('pencil', {
+  outline: 'white'
 });
 ```
-
 
 ## Examples
 
@@ -208,6 +225,19 @@ $('body').awesomeCursor('location-arrow', {
   size: 48,
   flip: 'horizontal'
 });
+
+// Set the cursor to be a red rotated left arrow
+$('body').awesomeCursor('long-arrow-left', {
+  color: 'red',
+  hotspot: 'top left',
+  rotate: 45,
+});
+
+// Set the cursor to a black eraser icon with a red outline
+$('body').awesomeCursor('eraser', {
+  color: 'black',
+  outline: 'red'
+});
 ```
 
 ## Browser Support
@@ -225,12 +255,18 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Roadmap
 
-- Allow cursors to be flipped (vertically and/or horizontally) and rotated by an abitrary number of degrees
-- Optional outlines for cursors
+- ~~Allow cursors to be flipped vertically and/or horizontally~~ [&#10004; v0.0.2](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.2)
+- ~~Allow cursors to be rotated by an abitrary number of degrees~~ [&#10004; v0.0.4](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.4)
+- ~~Optional outlines for cursors~~ [&#10004; v0.0.5](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.5)
 - IE11 support (if possible)
 - Data API (under consideration)
 - Support for composite cursors made of up of multiple icons, a la FontAwesome stacked icons (under consideration)
 
 ## Release History
 
+- `v0.0.5` - `12th Dec 2014` - Add `outline` option for specifying an outline color for cursors
+- `v0.0.4` - `29th Nov 2014` - Add `rotate` option for rotating cursor by a specified number of degrees.  Flip transformation now
+  applied after other transformations (e.g. rotate)
+- `v0.0.3` - `17th Nov 2014` - Fix an error in the README file
+- `v0.0.2` - `17th Nov 2014` - Add the `flip` option to allow cursors to be flipped horizontally, vertically, or in both directions
 - `v0.0.1` - `10th Nov 2014` - First version
