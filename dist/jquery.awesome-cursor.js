@@ -1,4 +1,4 @@
-/*! jquery-awesome-cursor - v0.0.4 - 2014-11-29
+/*! jquery-awesome-cursor - v0.0.5 - 2014-12-12
 * https://jwarby.github.io/jquery-awesome-cursor
 * Copyright (c) 2014 James Warwood; Licensed MIT */
 ;(function(global, factory) {
@@ -153,11 +153,16 @@
       // Remove the source element from the DOM
       srcElement.remove();
 
+      // Increase the size of the canvas to account for the cursor's outline
+      if (options.outline) {
+        canvasSize += 2;
+      }
+
       if (options.rotate) {
 
         // @TODO: move this into it's own function
         canvasSize = Math.ceil(Math.sqrt(
-          Math.pow(options.size, 2) + Math.pow(options.size, 2)
+          Math.pow(canvasSize, 2) + Math.pow(canvasSize, 2)
         ));
 
         hotspotOffset = (canvasSize - options.size) / 2;
@@ -179,8 +184,8 @@
             hotspotOffset : 0;
       } else {
 
-        canvas.height = options.size;
-        canvas.width = options.size;
+        canvas.height = canvasSize;
+        canvas.width = canvasSize;
 
         context = canvas.getContext('2d');
       }
@@ -191,6 +196,13 @@
       context.textAlign = 'center';
       context.textBaseline = 'middle';
       context.fillText(unicode, canvasSize / 2, canvasSize / 2);
+
+      // Check for outline option
+      if (options.outline) {
+        context.lineWidth = 0.5;
+        context.strokeStyle = options.outline;
+        context.strokeText(unicode, canvasSize / 2, canvasSize / 2);
+      }
 
       // Check flip option
       if (options.flip) {
@@ -218,6 +230,7 @@
     size: 18,
     hotspot: [0, 0],
     flip: '',
-    rotate: 0
+    rotate: 0,
+    outline: null
   };
 });

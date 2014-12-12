@@ -278,7 +278,7 @@
 
     expect(testsRemaining);
 
-    $('body')
+    this.elems
       .awesomeCursor('pencil', {
         color: 'red',
         size: 18
@@ -292,7 +292,7 @@
           }
       });
 
-    $('body')
+    this.elems
       .awesomeCursor('flag-checkered', {
         color: '#00ff00',
         size: 18
@@ -310,7 +310,7 @@
   browserOnlyTest('can set the size of a cursor', function() {
     expect(1);
 
-    $('body')
+    this.elems
       .awesomeCursor('globe', {
         color: 'black',
         size: 32
@@ -325,7 +325,7 @@
   browserOnlyTest('can set the size of a cursor using a string value', function() {
     expect(1);
 
-    $('body')
+    this.elems
       .awesomeCursor('desktop', {
         color: 'black',
         size: '22px'
@@ -340,7 +340,7 @@
   browserOnlyTest('can flip a cursor horizontally', function() {
     expect(1);
 
-    $('body')
+    this.elems
       .awesomeCursor('pencil', {
         color: 'red',
         size: 18,
@@ -356,7 +356,7 @@
   browserOnlyTest('can flip a cursor vertically', function() {
     expect(1);
 
-    $('body')
+    this.elems
       .awesomeCursor('flag-checkered', {
         color: '#00ff00',
         size: 18,
@@ -372,7 +372,7 @@
   browserOnlyTest('can flip a cursor vertically and horizontally', function() {
     expect(1);
 
-    $('body')
+    this.elems
       .awesomeCursor('globe', {
         color: 'black',
         size: 32,
@@ -389,7 +389,7 @@
     expect(2);
 
     var next = function() {
-      $('body').awesomeCursor('wrench', {
+      this.elems.awesomeCursor('wrench', {
         color: 'red',
         size: '32px',
         rotate: -45
@@ -399,9 +399,9 @@
           start();
         }
       );
-    };
+    }.bind(this);
 
-    $('body').awesomeCursor('pencil', {
+    this.elems.awesomeCursor('pencil', {
       color: 'black',
       size: '32px',
       rotate: 45
@@ -418,7 +418,7 @@
     expect(2);
 
     var next = function() {
-      $('body').awesomeCursor('pencil', {
+      this.elems.awesomeCursor('pencil', {
         color: 'green',
         size: '32px',
         rotate: 45,
@@ -429,9 +429,9 @@
           start();
         }
       );
-    };
+    }.bind(this);
 
-    $('body').awesomeCursor('pencil', {
+    this.elems.awesomeCursor('pencil', {
       color: 'green',
       size: '32px',
       rotate: 45,
@@ -467,4 +467,81 @@
       deepEqual(hotspot, subjects[s]);
     }
   });
+
+  browserOnlyTest('can add outline to cursor', function() {
+    expect(1);
+
+    this.elems.awesomeCursor('paint-brush', {
+      color: 'white',
+      size: 32,
+      outline: 'black'
+    }).cursorMatchesImage(
+      'expected/black-outline-paint-brush-32.png', function(matches) {
+        ok(matches);
+        start();
+      }
+    );
+  }, true);
+
+  browserOnlyTest('can add outlines to flipped cursors', function() {
+    expect(3);
+
+    var runTests = function(tests) {
+      var current = tests.pop();
+
+      if (!current) {
+        start();
+      } else {
+
+        this.elems.awesomeCursor('paint-brush', {
+          color: 'white',
+          size: 32,
+          outline: 'black',
+          flip: current
+        }).cursorMatchesImage(
+          'expected/black-outline-paint-brush-flip-' + current + '-32.png',
+              function(matches) {
+            ok(matches);
+            runTests(tests);
+          }
+        );
+      }
+    }.bind(this);
+
+    runTests(['horizontal', 'vertical', 'both']);
+
+  }, true);
+
+  browserOnlyTest('can add outline to rotated cursor', function() {
+    expect(1);
+
+    this.elems.awesomeCursor('pencil', {
+      color: 'skyblue',
+      size: 32,
+      rotate: 45,
+      outline: 'blue'
+    }).cursorMatchesImage(
+      'expected/blue-outline-paint-brush-rotate45.png', function(matches) {
+        ok(matches);
+        start();
+      }
+    );
+  }, true);
+
+  browserOnlyTest('can add outline to rotated and flipped cursor', function() {
+    expect(1);
+
+    this.elems.awesomeCursor('pencil', {
+      color: 'skyblue',
+      size: 32,
+      rotate: 45,
+      outline: 'blue',
+      flip: 'horizontal'
+    }).cursorMatchesImage(
+      'expected/blue-outline-paint-brush-rotate45-flip-h.png', function(matches) {
+        ok(matches);
+        start();
+      }
+    );
+  }, true);
 }(this, jQuery));
