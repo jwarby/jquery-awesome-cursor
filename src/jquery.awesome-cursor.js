@@ -132,8 +132,17 @@
         return Math.min(options.size - 1, Math.max(0, coordinate));
       });
 
-      var srcElement = $('<i />', {
-          class: 'fa fa-' + iconName,
+      var cssClass = (function(name, template) {
+          if (typeof template === 'string') {
+            return template.replace(/%s/g, name);
+          } else if (typeof template === 'function') {
+            return template(name);
+          }
+
+          return name;
+        })(iconName, options.font.cssClass),
+        srcElement = $('<i />', {
+          class: cssClass,
           style: 'position: absolute; left: -9999px; top: -9999px;'
         }),
         canvas = $('<canvas />')[0],
@@ -189,7 +198,7 @@
 
       // Draw the cursor to the canvas
       context.fillStyle = options.color;
-      context.font = options.size + 'px FontAwesome';
+      context.font = options.size + 'px ' + options.font.family;
       context.textAlign = 'center';
       context.textBaseline = 'middle';
       context.fillText(unicode, canvasSize / 2, canvasSize / 2);
@@ -228,6 +237,10 @@
     hotspot: [0, 0],
     flip: '',
     rotate: 0,
-    outline: null
+    outline: null,
+    font: {
+      family: 'FontAwesome',
+      cssClass: 'fa fa-%s'
+    }
   };
 });
