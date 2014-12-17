@@ -311,6 +311,7 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
+- `v0.1.0` - `17th Dec 2014` - Add `font` option for specifying an alternative icon font to use instead of FontAwesome
 - `v0.0.5` - `12th Dec 2014` - Add `outline` option for specifying an outline color for cursors
 - `v0.0.4` - `29th Nov 2014` - Add `rotate` option for rotating cursor by a specified number of degrees.  Flip transformation now
   applied after other transformations (e.g. rotate)
