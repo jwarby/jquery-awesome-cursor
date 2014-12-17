@@ -544,4 +544,63 @@
       }
     );
   }, true);
+
+  browserOnlyTest('can use a custom font instead of FontAwesome', function() {
+    expect(1);
+
+    this.elems.awesomeCursor('pencil', {
+      font: {
+        family: 'AwesomeCursorTest',
+        cssClass: 'act act-%s'
+      },
+      size: 36,
+      color: 'black'
+    }).cursorMatchesImage(
+      'expected/awesome-cursor-test-font/black-pencil-36.png', function(matches) {
+        ok(matches);
+        start();
+      }
+    );
+  }, true);
+
+  browserOnlyTest('can apply effects to custom font cursors', function() {
+    expect(1);
+
+    this.elems.awesomeCursor('brush', {
+      font: {
+        family: 'AwesomeCursorTest',
+        cssClass: 'act act-%s'
+      },
+      size: 30,
+      color: 'limegreen',
+      outline: 'forestgreen',
+      rotate: 35,
+      flip: 'horizontal'
+    }).cursorMatchesImage(
+      'expected/awesome-cursor-test-font/green-brush-30-effects.png', function(matches) {
+        ok(matches);
+        start();
+      }
+    );
+  }, true);
+
+  browserOnlyTest('can set custom font `cssClass` using a function', function() {
+    expect(1);
+
+    this.elems.awesomeCursor('pencil', {
+      font: {
+        family: 'AwesomeCursorTest',
+        cssClass: function(iconName) {
+          return 'act act-' + iconName;
+        }
+      },
+      size: 36,
+      color: 'black'
+    }).cursorMatchesImage(
+      'expected/awesome-cursor-test-font/black-pencil-36.png', function(matches) {
+        ok(matches);
+        start();
+      }
+    );
+  }, true);
 }(this, jQuery));

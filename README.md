@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/jwarby/jquery-awesome-cursor/peer-status.svg?style=flat)](https://david-dm.org/jwarby/jquery-awesome-cursor#info=peerDependencies)
 [![devDependency Status](https://david-dm.org/jwarby/jquery-awesome-cursor/dev-status.svg?style=flat)](https://david-dm.org/jwarby/jquery-awesome-cursor#info=devDependencies)
 
-A jQuery plugin for using FontAwesome icons as custom CSS cursors.
+A jQuery plugin for using FontAwesome icons as custom CSS cursors.  Also supports using a custom icon font instead of FontAwesome.
 
 See <https://jwarby.github.io/jquery-awesome-cursor/> for the full documentation and demos.
 
@@ -200,6 +200,52 @@ $('body').awesomeCursor('pencil', {
 });
 ```
 
+#### Using a different icon font
+
+As of `v0.1.0`, a different icon font instead of FontAwesome can be used.  To use a different font, the `font` option must be set to
+an object, specifying the font family and the CSS class format for icons.  The example below shows how [typicons](http://typicons.com)
+icons can be used instead of FontAwesome icons:
+
+```javascript
+// Using 'typicons' icons instead of FontAwesome
+$('body').awesomecursor('brush', {
+  font: {
+    family: 'typicons',
+    cssClass: 'typcn typcn-%s' // '%s' is the icon name ('brush')
+  }
+});
+```
+
+In the above example, we set the font `family` to 'typicons', and set the `cssClass` to the format that `typicons` uses.  `%s` denotes the
+icon name that is passed as the first argument to `awesomeCursor`.
+
+The `cssClass` option can either be a string, as shown above, or a function:
+
+```javascript
+// Using 'typicons' instead of fontawesome
+$('body').awesomecursor('brush', {
+  font: {
+    family: 'typicons',
+    cssClass: function(name) {
+
+      // `name` is 'brush'
+      return 'typcn typcn-' + name;
+    }
+  }
+});
+```
+
+You may want to set your replacement icon font as the default:
+
+```javascript
+// Use 'typicons' as default
+$.fn.awesomeCursor.defaults.font = {
+  family: 'typicons',
+  cssClass: 'typcn typcn-%s'
+};
+```
+**Note: the replacement icon font must use `:before` pseudo elements with unicode content**
+
 ## Examples
 
 ```javascript
@@ -258,9 +304,10 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 - ~~Allow cursors to be flipped vertically and/or horizontally~~ [&#10004; v0.0.2](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.2)
 - ~~Allow cursors to be rotated by an abitrary number of degrees~~ [&#10004; v0.0.4](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.4)
 - ~~Optional outlines for cursors~~ [&#10004; v0.0.5](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.5)
+- ~~Allow a different icon font to FontAwesome to be used~~ [&#10004; v0.1.0](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.1.0)
 - IE11 support (if possible)
 - Data API (under consideration)
-- Support for composite cursors made of up of multiple icons, a la FontAwesome stacked icons (under consideration)
+- ~~Support for composite cursors made of up of multiple icons, a la FontAwesome stacked icons (under consideration)~~ [&#10005; Not implemented](https://github.com/jwarby/jquery-awesome-cursor/issues/7)
 
 ## Release History
 
