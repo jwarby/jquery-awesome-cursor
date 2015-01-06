@@ -34,11 +34,11 @@
       "grunt-contrib-connect": "^0.9.0",
       "grunt-contrib-jshint": "~0.10.0",
       "grunt-contrib-qunit": "~0.5.1",
-      "grunt-contrib-uglify": "^0.6.0",
+      "grunt-contrib-uglify": "^0.7.0",
       "grunt-contrib-watch": "~0.6.1",
       "grunt-unified-manifest": "git://github.com/jwarby/grunt-unified-manifest.git",
       "jshint-stylish": "^1.0.0",
-      "load-grunt-tasks": "^1.0.0",
+      "load-grunt-tasks": "^2.0.0",
       "time-grunt": "^1.0.0"
     },
     "peerDependencies": {
