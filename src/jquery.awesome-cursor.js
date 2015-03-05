@@ -196,6 +196,9 @@
         context = canvas.getContext('2d');
       }
 
+      // Firefox wraps the extracted unicode value in quotation marks - #10
+      unicode = unicode.replace(/"/g, '');
+
       // Draw the cursor to the canvas
       context.fillStyle = options.color;
       context.font = options.size + 'px ' + options.font.family;
