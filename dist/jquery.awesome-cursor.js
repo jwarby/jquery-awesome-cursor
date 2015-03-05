@@ -1,4 +1,4 @@
-/*! jquery-awesome-cursor - v0.1.0 - 2015-03-05
+/*! jquery-awesome-cursor - v0.1.1 - 2015-03-05
 * https://jwarby.github.io/jquery-awesome-cursor
 * Copyright (c) 2015 James Warwood; Licensed MIT */
 ;(function(global, factory) {

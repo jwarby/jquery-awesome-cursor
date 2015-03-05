@@ -289,7 +289,7 @@ $('body').awesomeCursor('eraser', {
 ## Browser Support
 
 - Chrome
-- FireFox
+- Firefox
 
 ## Bugs and Feature Requests
 
@@ -306,11 +306,12 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 - ~~Optional outlines for cursors~~ [&#10004; v0.0.5](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.0.5)
 - ~~Allow a different icon font to FontAwesome to be used~~ [&#10004; v0.1.0](https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.1.0)
 - IE11 support (if possible)
-- Data API (under consideration)
+- ~~Data API (under consideration)~~ [&#10005; Not implemented](https://github.com/jwarby/jquery-awesome-cursor/issues/6)
 - ~~Support for composite cursors made of up of multiple icons, a la FontAwesome stacked icons (under consideration)~~ [&#10005; Not implemented](https://github.com/jwarby/jquery-awesome-cursor/issues/7)
 
 ## Release History
 
+- `v0.1.1` - ` 5th Mar 2015` - Bug fix for rendering artifacts in Firefox ([#10](https://github.com/jwarby/jquery-awesome-cursor/issues/10))
 - `v0.1.0` - `17th Dec 2014` - Add `font` option for specifying an alternative icon font to use instead of FontAwesome
 - `v0.0.5` - `12th Dec 2014` - Add `outline` option for specifying an outline color for cursors
 - `v0.0.4` - `29th Nov 2014` - Add `rotate` option for rotating cursor by a specified number of degrees.  Flip transformation now
