@@ -1,6 +1,6 @@
-/*! jquery-awesome-cursor - v0.1.0 - 2014-12-17
+/*! jquery-awesome-cursor - v0.1.1 - 2015-03-05
 * https://jwarby.github.io/jquery-awesome-cursor
-* Copyright (c) 2014 James Warwood; Licensed MIT */
+* Copyright (c) 2015 James Warwood; Licensed MIT */
 ;(function(global, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);
@@ -198,6 +198,9 @@
 
         context = canvas.getContext('2d');
       }
+
+      // Firefox wraps the extracted unicode value in quotation marks - #10
+      unicode = unicode.replace(/"/g, '');
 
       // Draw the cursor to the canvas
       context.fillStyle = options.color;
