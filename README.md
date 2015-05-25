@@ -311,6 +311,7 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
+- `v0.1.2` - `25th May 2015` - Bug fix for rendering artifacts in Chrome ([#14](https://github.com/jwarby/jquery-awesome-cursor/issues/14))
 - `v0.1.1` - ` 5th Mar 2015` - Bug fix for rendering artifacts in Firefox ([#10](https://github.com/jwarby/jquery-awesome-cursor/issues/10))
 - `v0.1.0` - `17th Dec 2014` - Add `font` option for specifying an alternative icon font to use instead of FontAwesome
 - `v0.0.5` - `12th Dec 2014` - Add `outline` option for specifying an outline color for cursors

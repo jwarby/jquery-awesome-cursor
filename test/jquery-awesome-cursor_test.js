@@ -144,7 +144,7 @@
       $expectedImg;
 
     if (!actualImgData || actualImgData.length !== 2) {
-      return false;
+      return callback(false);
     }
 
     $expectedImg = $('<img />', {
@@ -155,7 +155,13 @@
       var expectedCanvas = getCanvasFromImage($expectedImg[0]),
         actualCanvas = getCanvasFromDataURI(actualImgData[1]);
 
-      callback(canvasCompare(expectedCanvas, actualCanvas));
+      if (!canvasCompare(expectedCanvas, actualCanvas)) {
+        $('body').append(actualCanvas, '<h5>' + imgSrc + '</h5>');
+
+        return callback(false);
+      }
+
+      return callback(true);
     });
   };
 
