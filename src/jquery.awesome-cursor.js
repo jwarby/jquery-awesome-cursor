@@ -197,9 +197,7 @@
       }
 
       /* Firefox wraps the extracted unicode value in double quotes - #10
-       *
-       * @debug Some versions of Chrome may be wrapping the extracted unicode
-       * value in single quotes see if this fixes - #14
+       * Chrome 43+ is wrapping the extracted value in single quotes - #14
        */
       unicode = unicode.replace(/['"]/g, '');
 
