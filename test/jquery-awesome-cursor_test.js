@@ -1,4 +1,5 @@
 (function(global, $) {
+  'use strict';
 
   /* Regular expresssion which defines the expected value of the CSS cursor
    * property after the plugin has been called on an element
@@ -6,35 +7,22 @@
   var CURSOR_REGEX = /^url\((?:")?data:image\/png;base64,.*\)(?: 0 0)?, auto$/;
 
   /**
-   * Only run the test if we're in a real browser, and not in PhantomJS.  This
-   * is required for some tests, as PhantomJS doesn't report certain aspects of
-   * cursor property correctly.  For example, PhantomJS will never report the
-   * cursor hotspot location, as it returns:
+   * Given a function, ensure that function only ever runs once.
    *
-   *   url(data:image/png;base64,...), auto
+   * @param {Function} fn  The function that is to be restricted so it can only
+   *                       run once
    *
-   * instead of
-   *
-   *   url(data:image/png;base64,...) 0 0, auto
-   *
-   * @param {String} name      The name of the test
-   * @param {Function} testFn  The test function
-   * @param {Boolean} async    (Optional) set to true to run the test
-   *                           asynchronously.  Defaults to false.
+   * @param {Function} a new function which can be called multiple times, but
+   *                   will only ever execute the input `fn` once
    */
-  function browserOnlyTest(name, testFn, async) {
-    if (global.navigator.userAgent.indexOf('PhantomJS') !== -1) {
-      console.warn('\n\033[1;31mWARNING: Skipping test \'' + name + '\' ' +
-        'because it is marked as browser-only\033[0m');
-      return;
-    }
-
-    if (!async) {
-      test(name, testFn);
-    } else {
-      asyncTest(name, testFn);
-    }
-  }
+  var once = function(fn) {
+    return function() {
+      if (!fn.hasRun) {
+        fn.hasRun = true;
+        return fn.apply(this, arguments);
+      }
+    };
+  };
 
   /**
    * Extract the cursor's x, y hotspot from the specified element.
@@ -119,11 +107,24 @@
 
     for (var d = 0; d < data1.data.length; d++) {
       if (data1.data[d] !== data2.data[d]) {
+
         return false;
+
       }
     }
 
     return true;
+  }
+
+  /**
+   * @HACK
+   *
+   * Wait for a while to allow fonts to load.
+   */
+  function waitForFonts() {
+    global.QUnit.stop();
+
+    setTimeout(global.QUnit.start, 2000);
   }
 
   /**
@@ -153,11 +154,9 @@
 
     $expectedImg.load(function() {
       var expectedCanvas = getCanvasFromImage($expectedImg[0]),
-        actualCanvas = getCanvasFromDataURI(actualImgData[1]);
+        actualCanvas = getCanvasFromDataURI(actualImgData[1].replace(/^["']|["']$/g, ''));
 
       if (!canvasCompare(expectedCanvas, actualCanvas)) {
-        $('body').append(actualCanvas, '<h5>' + imgSrc + '</h5>');
-
         return callback(false);
       }
 
@@ -189,6 +188,28 @@
   module('jQuery#awesomeCursor', {
     // This will run before each test in this module.
     setup: function() {
+
+      // On first run, allow some time for fonts to finish loading
+      once(waitForFonts)();
+
+      $('#qunit-fixture').remove();
+      var $qunit = $('<div />', {
+        id: 'qunit'
+      });
+      var $fixture = $('<div />', {
+        id: 'qunit-fixture'
+      });
+
+      $fixture
+        .append($('<i />', {
+          class: 'fa fa-pencil'
+        }))
+        .append($('<i />', {
+          class: 'act act-pencil'
+        }))
+      ;
+
+      $('body').append($qunit).append($fixture);
       this.elems = $('#qunit-fixture').children();
     }
   });
@@ -235,7 +256,7 @@
     }));
   });
 
-  browserOnlyTest('`hotspot` string values are correctly parsed', function() {
+  test('`hotspot` string values are correctly parsed', function() {
     var size = $.fn.awesomeCursor.defaults.size,
       subjects = {
         'top left': [0, 0],
@@ -262,7 +283,7 @@
     }
   });
 
-  browserOnlyTest('`hotspot` values get clamped between 0 and cursor size - 1', function() {
+  test('`hotspot` values get clamped between 0 and cursor size - 1', function() {
     var hotspot;
 
     expect(3);
@@ -279,7 +300,7 @@
     equal(hotspot[1], 31);
   });
 
-  browserOnlyTest('can set the color of a cursor', function() {
+  asyncTest('can set the color of a cursor', function() {
     var testsRemaining = 2;
 
     expect(testsRemaining);
@@ -311,9 +332,9 @@
             start();
         }
       });
-  }, true);
+  });
 
-  browserOnlyTest('can set the size of a cursor', function() {
+  asyncTest('can set the size of a cursor', function() {
     expect(1);
 
     this.elems
@@ -326,9 +347,9 @@
           ok(matches);
           start();
       });
-  }, true);
+  });
 
-  browserOnlyTest('can set the size of a cursor using a string value', function() {
+  asyncTest('can set the size of a cursor using a string value', function() {
     expect(1);
 
     this.elems
@@ -341,9 +362,9 @@
           ok(matches);
           start();
       });
-  }, true);
+  });
 
-  browserOnlyTest('can flip a cursor horizontally', function() {
+  asyncTest('can flip a cursor horizontally', function() {
     expect(1);
 
     this.elems
@@ -357,9 +378,9 @@
           ok(matches);
           start();
       });
-  }, true);
+  });
 
-  browserOnlyTest('can flip a cursor vertically', function() {
+  asyncTest('can flip a cursor vertically', function() {
     expect(1);
 
     this.elems
@@ -373,9 +394,9 @@
           ok(matches);
           start();
       });
-  }, true);
+  });
 
-  browserOnlyTest('can flip a cursor vertically and horizontally', function() {
+  asyncTest('can flip a cursor vertically and horizontally', function() {
     expect(1);
 
     this.elems
@@ -389,9 +410,9 @@
           ok(matches);
           start();
       });
-  }, true);
+  });
 
-  browserOnlyTest('can rotate a cursor', function() {
+  asyncTest('can rotate a cursor', function() {
     expect(2);
 
     var next = function() {
@@ -418,9 +439,9 @@
       }
     );
 
-  }, true);
+  });
 
-  browserOnlyTest('can rotate and flip a cursor', function() {
+  asyncTest('can rotate and flip a cursor', function() {
     expect(2);
 
     var next = function() {
@@ -449,9 +470,9 @@
       }
     );
 
-  }, true);
+  });
 
-  browserOnlyTest('hotspot gets translated when cursor rotated', function() {
+  test('hotspot gets translated when cursor rotated', function() {
     var size = $.fn.awesomeCursor.defaults.size,
       newSize = Math.ceil(Math.sqrt(
         Math.pow(size, 2) + Math.pow(size, 2)
@@ -474,7 +495,7 @@
     }
   });
 
-  browserOnlyTest('can add outline to cursor', function() {
+  asyncTest('can add outline to cursor', function() {
     expect(1);
 
     this.elems.awesomeCursor('paint-brush', {
@@ -487,9 +508,9 @@
         start();
       }
     );
-  }, true);
+  });
 
-  browserOnlyTest('can add outlines to flipped cursors', function() {
+  asyncTest('can add outlines to flipped cursors', function() {
     expect(3);
 
     var runTests = function(tests) {
@@ -516,9 +537,9 @@
 
     runTests(['horizontal', 'vertical', 'both']);
 
-  }, true);
+  });
 
-  browserOnlyTest('can add outline to rotated cursor', function() {
+  asyncTest('can add outline to rotated cursor', function() {
     expect(1);
 
     this.elems.awesomeCursor('pencil', {
@@ -532,9 +553,9 @@
         start();
       }
     );
-  }, true);
+  });
 
-  browserOnlyTest('can add outline to rotated and flipped cursor', function() {
+  asyncTest('can add outline to rotated and flipped cursor', function() {
     expect(1);
 
     this.elems.awesomeCursor('pencil', {
@@ -549,9 +570,9 @@
         start();
       }
     );
-  }, true);
+  });
 
-  browserOnlyTest('can use a custom font instead of FontAwesome', function() {
+  asyncTest('can use a custom font instead of FontAwesome', function() {
     expect(1);
 
     this.elems.awesomeCursor('pencil', {
@@ -567,9 +588,9 @@
         start();
       }
     );
-  }, true);
+  });
 
-  browserOnlyTest('can apply effects to custom font cursors', function() {
+  asyncTest('can apply effects to custom font cursors', function() {
     expect(1);
 
     this.elems.awesomeCursor('brush', {
@@ -588,9 +609,9 @@
         start();
       }
     );
-  }, true);
+  });
 
-  browserOnlyTest('can set custom font `cssClass` using a function', function() {
+  asyncTest('can set custom font `cssClass` using a function', function() {
     expect(1);
 
     this.elems.awesomeCursor('pencil', {
@@ -608,5 +629,5 @@
         start();
       }
     );
-  }, true);
+  });
 }(this, jQuery));

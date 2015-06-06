@@ -39,11 +39,40 @@ module.exports = function (grunt) {
         dest: 'dist/<%= pkg.name.replace(\'-\', \'.\') %>.min.js'
       }
     },
-    qunit: {
-      all: {
-        options: {
-          urls: ['http://localhost:9000/test/<%= pkg.name %>.html']
-        }
+    karma: {
+      options: {
+        browsers: ['Chrome', 'Firefox'],
+        configFile: 'karma.conf.js',
+        singleRun: true
+      },
+      src: {
+      },
+      dist: {
+
+        /* Override files list.  Should be able to extend list from Karam config
+         * but it's not working... @todo
+         */
+        files: [
+          {
+            src: ['bower_components/fontawesome/fonts/*.*'],
+            served: true,
+            included: false
+          },
+          {
+            src: ['test/awesome-cursor-test-font/fonts/*.*'],
+            served: true,
+            included: false
+          },
+          { src: ['bower_components/fontawesome/**/*.css'] },
+          { src: ['test/awesome-cursor-test-font/style.css'] },
+          { src: ['test/**/*.png'], served: true, included: false },
+          { src: ['bower_components/jquery/dist/jquery.js'] },
+          { src: ['dist/*.min.js'] },
+          { src: ['test/*.js'] }
+        ]
+      },
+      watch: {
+        singleRun: false
       }
     },
     jshint: {
@@ -83,14 +112,6 @@ module.exports = function (grunt) {
         tasks: ['jshint:test', 'qunit']
       }
     },
-    connect: {
-      server: {
-        options: {
-          hostname: '*',
-          port: 9000
-        }
-      }
-    },
     unifiedmanifest: {
       all: {
         files: {
@@ -102,13 +123,8 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', [
-    'jshint', 'unifiedmanifest', 'connect', 'qunit', 'clean', 'concat', 'uglify'
+    'jshint', 'unifiedmanifest', 'test', 'clean', 'concat', 'uglify'
   ]);
-  grunt.registerTask('server', function () {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` ' +
-        'to start a server.');
-    grunt.task.run(['serve']);
-  });
-  grunt.registerTask('serve', ['connect', 'watch']);
-  grunt.registerTask('test', ['jshint', 'connect', 'qunit']);
+
+  grunt.registerTask('test', ['jshint', 'karma']);
 };
