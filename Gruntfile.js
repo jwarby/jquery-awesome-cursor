@@ -41,7 +41,7 @@ module.exports = function (grunt) {
     },
     karma: {
       options: {
-        browsers: ['Chrome', 'Firefox'],
+        browsers: ['Chrome'],// 'Firefox'],
         configFile: 'karma.conf.js',
         singleRun: true
       },
@@ -123,8 +123,8 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', [
-    'jshint', 'unifiedmanifest', 'test', 'clean', 'concat', 'uglify'
+    'jshint', 'unifiedmanifest', 'clean', 'concat', 'uglify', 'test'
   ]);
 
-  grunt.registerTask('test', ['jshint', 'karma']);
+  grunt.registerTask('test', ['jshint', 'karma:src', 'karma:dist']);
 };

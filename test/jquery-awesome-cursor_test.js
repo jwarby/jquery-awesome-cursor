@@ -1,3 +1,4 @@
+/* global asyncTest,deepEqual,equal,expect,ok,start,strictEqual,test,throws */
 (function(global, $) {
   'use strict';
 
