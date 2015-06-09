@@ -20,11 +20,7 @@
     "type": "git",
     "url": "https://github.com/jwarby/jquery-awesome-cursor.git"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
+  "license": "MIT",
   "title": "jQuery Awesome Cursor plugin",
   "dependencies": {
     "jquery": ">=1.8",
