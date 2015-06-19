@@ -41,7 +41,7 @@ module.exports = function (grunt) {
     },
     karma: {
       options: {
-        browsers: ['Chrome'],// 'Firefox'],
+        browsers: ['Chrome'], // @todo , 'Firefox'],
         configFile: 'karma.conf.js',
         singleRun: true
       },
