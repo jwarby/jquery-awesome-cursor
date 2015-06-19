@@ -49,7 +49,7 @@ module.exports = function (grunt) {
       },
       dist: {
 
-        /* Override files list.  Should be able to extend list from Karam config
+        /* Override files list.  Should be able to extend list from Karma config
          * but it's not working... @todo
          */
         files: [
@@ -123,8 +123,9 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', [
-    'jshint', 'unifiedmanifest', 'clean', 'concat', 'uglify', 'test'
+    'jshint', 'unifiedmanifest', 'clean', 'concat', 'uglify',  'karma:src',
+    'karma:dist'
   ]);
 
-  grunt.registerTask('test', ['jshint', 'karma:src', 'karma:dist']);
+  grunt.registerTask('test', ['karma:src']);
 };
