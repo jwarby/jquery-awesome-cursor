@@ -18,5 +18,5 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
-  "maxlen": 80
+  "maxlen": 100
 }
