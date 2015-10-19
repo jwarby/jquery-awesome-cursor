@@ -18,7 +18,7 @@ Requires [jQuery](http://jquery.com) and [FontAwesome](http://fontawesome.io).
 
 ### Installing the plugin
 
-#### via `bower`: Easiest
+#### via `bower`
 
 ```shell
 bower install jquery-awesome-cursor
@@ -30,7 +30,7 @@ bower install jquery-awesome-cursor
 <script src="bower_components/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
 ```
 
-#### via `npm`: Easier
+#### via `npm`
 
 ```shell
 npm install jquery-awesome-cursor
@@ -55,6 +55,16 @@ In your web page:
 <link rel="stylesheet" href="/path/to/font-awesome.min.css" type="text/css">
 <script src="/path/to/jquery.js"></script>
 <script src="path/to/jquery.awesome-cursor.min.js"></script>
+```
+
+#### RawGit CDN
+
+You could also use [RawGit](https://rawgit.com)'s CDN:
+
+```html
+<link rel="stylesheet" href="/path/to/font-awesome.min.css" type="text/css">
+<script src="/path/to/jquery.js"></script>
+<script src="https://cdn.rawgit.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.min.js"></script>
 ```
 ## Documentation
 
@@ -311,6 +321,7 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
+- `v0.1.3` - `19th Oct 2015` - Bug fix for Chrome not updating cursor if cursor had already been set, run tests using Karma, using SPDX format for "license" field in package.json
 - `v0.1.2` - `25th May 2015` - Bug fix for rendering artifacts in Chrome ([#14](https://github.com/jwarby/jquery-awesome-cursor/issues/14))
 - `v0.1.1` - ` 5th Mar 2015` - Bug fix for rendering artifacts in Firefox ([#10](https://github.com/jwarby/jquery-awesome-cursor/issues/10))
 - `v0.1.0` - `17th Dec 2014` - Add `font` option for specifying an alternative icon font to use instead of FontAwesome

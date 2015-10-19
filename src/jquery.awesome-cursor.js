@@ -197,9 +197,7 @@
       }
 
       /* Firefox wraps the extracted unicode value in double quotes - #10
-       *
-       * @debug Some versions of Chrome may be wrapping the extracted unicode
-       * value in single quotes see if this fixes - #14
+       * Chrome 43+ is wrapping the extracted value in single quotes - #14
        */
       unicode = unicode.replace(/['"]/g, '');
 
@@ -224,13 +222,18 @@
 
       dataURL = canvas.toDataURL('image/png');
 
-      $(this).css('cursor', [
-        'url(' + dataURL + ')',
-        options.hotspot[0],
-        options.hotspot[1],
-        ',',
-        'auto'
-      ].join(' '));
+      $(this)
+
+        // Fixes issue with Chrome not setting cursor if already set
+        .css('cursor', '')
+        .css('cursor', [
+          'url(' + dataURL + ')',
+          options.hotspot[0],
+          options.hotspot[1],
+          ',',
+          'auto'
+        ].join(' '))
+      ;
 
       // Maintain chaining
       return this;
