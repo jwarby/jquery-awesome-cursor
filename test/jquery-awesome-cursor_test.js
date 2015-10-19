@@ -158,6 +158,8 @@
         actualCanvas = getCanvasFromDataURI(actualImgData[1].replace(/^["']|["']$/g, ''));
 
       if (!canvasCompare(expectedCanvas, actualCanvas)) {
+        $('body').append(actualCanvas, expectedCanvas, '<h5>' + imgSrc + '</h5>');
+
         return callback(false);
       }
 

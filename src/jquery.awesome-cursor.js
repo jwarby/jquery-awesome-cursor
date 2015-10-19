@@ -222,13 +222,18 @@
 
       dataURL = canvas.toDataURL('image/png');
 
-      $(this).css('cursor', [
-        'url(' + dataURL + ')',
-        options.hotspot[0],
-        options.hotspot[1],
-        ',',
-        'auto'
-      ].join(' '));
+      $(this)
+
+        // Fixes issue with Chrome not setting cursor if already set
+        .css('cursor', '')
+        .css('cursor', [
+          'url(' + dataURL + ')',
+          options.hotspot[0],
+          options.hotspot[1],
+          ',',
+          'auto'
+        ].join(' '))
+      ;
 
       // Maintain chaining
       return this;

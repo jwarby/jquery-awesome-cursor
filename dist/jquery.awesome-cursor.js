@@ -1,4 +1,4 @@
-/*! jquery-awesome-cursor - v0.1.2 - 2015-05-25
+/*! jquery-awesome-cursor - v0.1.2 - 2015-10-19
 * https://jwarby.github.io/jquery-awesome-cursor
 * Copyright (c) 2015 James Warwood; Licensed MIT */
 ;(function(global, factory) {
@@ -200,9 +200,7 @@
       }
 
       /* Firefox wraps the extracted unicode value in double quotes - #10
-       *
-       * @debug Some versions of Chrome may be wrapping the extracted unicode
-       * value in single quotes see if this fixes - #14
+       * Chrome 43+ is wrapping the extracted value in single quotes - #14
        */
       unicode = unicode.replace(/['"]/g, '');
 
@@ -227,13 +225,18 @@
 
       dataURL = canvas.toDataURL('image/png');
 
-      $(this).css('cursor', [
-        'url(' + dataURL + ')',
-        options.hotspot[0],
-        options.hotspot[1],
-        ',',
-        'auto'
-      ].join(' '));
+      $(this)
+
+        // Fixes issue with Chrome not setting cursor if already set
+        .css('cursor', '')
+        .css('cursor', [
+          'url(' + dataURL + ')',
+          options.hotspot[0],
+          options.hotspot[1],
+          ',',
+          'auto'
+        ].join(' '))
+      ;
 
       // Maintain chaining
       return this;
