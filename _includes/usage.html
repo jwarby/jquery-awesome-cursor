@@ -1,0 +1,32 @@
+<section id="usage">
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Basic demo -->
+      <h2>Usage</h2>
+
+      <p>To set a cursor on an element, just call <code class="subtle">$('&lt;selector&gt;').awesomeCursor('&lt;icon name&gt;');</code></p>
+      <p>For example, to use the <a data-ga-category="external links" data-ga-label="fontawesome.com" href="http://fontawesome.io/icon/pencil/">pencil icon</a>
+      as the <code class="subtle">&lt;body&gt;</code> element's cursor, do the following:</p>
+      <br>
+      {% highlight javascript %}$('body').awesomeCursor('pencil');{% endhighlight %}
+      <br>
+
+      <p>Cursors also support a number of options, which are detailed in the next section.</p>
+      <p>Options are set by passing an object as the second parameter to <code class="subtle">awesomeCursor()</code>:</p>
+      <br>
+      {% highlight javascript %}
+$('body').awesomeCursor('pencil', {
+  /* your options here */
+});
+      {% endhighlight %}
+    </div>
+
+    <div class="col-lg-12">
+      <h3>Resetting the cursor</h3>
+
+      <p>You can reset the cursor to it's previous icon using jQuery's <code class="subtle">css</code> function:</p>
+
+      {% highlight javascript %}$('body').css('cursor', '');{% endhighlight %}
+    </div>
+  </div>
+</section>

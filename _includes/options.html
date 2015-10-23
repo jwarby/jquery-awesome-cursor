@@ -1,0 +1,381 @@
+  <section id="options">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Options</h2>
+
+        <p>The cursor attributes can be configured using the options listed below.</p>
+
+        <div class="panel-group" id="options-accordion" role="tablist" aria-multiselectable="true">
+
+          <!-- Icon demo -->
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="icon">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#options-accordion" href="#iconPanel" aria-expanded="false" aria-controls="icon">
+                  Icon <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+                </a>
+              </h4>
+            </div>
+            <div id="iconPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="icon">
+              <div class="panel-body">
+                <code class="subtle">type: <strong>String</strong></code>
+                <p>The first parameter to <code>awesomeCursor</code> is the icon name.</p>
+
+                <br>
+                {% highlight javascript %}$('body').awesomeCursor('pencil');{% endhighlight %}
+                <br>
+
+                <h4><u>Try it now!</u></h4>
+                <form class="form-horizontal" id="try-icon">
+                  <div class="control-group">
+                    <label for="icon-name" class="col-lg-1"><big><strong>Icon name:</strong></big>
+                    </label>
+                    <div class="col-lg-3">
+                      <input class="form-control" name="icon-name" type="text" value="pencil">
+                    </div>
+                  </div>
+                </form>
+                <small>Pssst! Stuck for ideas? Try these:</small>
+                <a href="#" class="suggestion">paint-brush</a>
+                <a href="#" class="suggestion">paper-plane</a>
+                <a href="#" class="suggestion">expand</a>
+                <a href="#" class="suggestion">hand-o-up</a>
+                <a href="#" class="suggestion">ban</a>
+              </div>
+            </div>
+          </div>
+          <!-- Color demo -->
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="color">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#options-accordion" href="#colorPanel" aria-expanded="false" aria-controls="color">
+                  Color
+                  <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+                  <code class="subtle pull-right">default: '#000000'</code>
+                </a>
+              </h4>
+            </div>
+            <div id="colorPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="color">
+              <div class="panel-body">
+                <code class="subtle">type: <strong>String</strong></code>
+                <p>
+                The color of a cursor can be changed by setting the <code>color</code> option to any valid CSS color string:
+                </p>
+                <ul>
+                  <li>'red'</li>
+                  <li>'rgb(255, 0, 0)'</li>
+                  <li>'hsl(0, 100%, 50%)'</li>
+                  <li><em>etc.</em></li>
+                </ul>
+
+                <br>
+                {% highlight javascript %}$('body').awesomeCursor('pencil', {
+  color: 'red'
+});{% endhighlight %}
+
+                <br>
+                <h4><u>Try it now!</u></h4>
+                <form class="form-horizontal try" data-property="color">
+                  <div class="control-group">
+                    <label for="color" class="col-lg-1"><big><strong>Color:</strong></big>
+                    </label>
+                    <div class="col-lg-3">
+                      <input class="form-control" name="color" type="color" value="red">
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <!-- Size demo -->
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="size">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#options-accordion" href="#sizePanel" aria-expanded="false" aria-controls="size">
+                  Size
+                  <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+                  <code class="subtle pull-right">default: 14</code>
+                </a>
+              </h4>
+            </div>
+            <div id="sizePanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="size">
+              <div class="panel-body">
+                <code class="subtle">type: <strong>Number</strong></code>
+                <p>The size of the cursor can be changed by setting the <code>size</code> option.</p>
+                <p><em>Note: cursor sizes can only be defined in pixels, as the cursor hotspot CSS syntax only supports pixels</em></p>
+
+                <br>
+                {% highlight javascript %}$('body').awesomeCursor('pencil', {
+  size: 32
+});{% endhighlight %}
+
+                <br>
+                <h4><u>Try it now!</u></h4>
+                <form class="form-horizontal try" data-property="size">
+                  <div class="control-group">
+                    <label for="size" class="col-lg-1"><big><strong>Size:</strong></big>
+                    </label>
+                    <div class="col-lg-3">
+                      <input class="form-control" name="size" type="number" value="32" step="6" max="128" min="2">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hotspot demo -->
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="hotspot">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#options-accordion" href="#hotspotPanel" aria-expanded="false" aria-controls="hotspot">
+                  Hotspot
+                  <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+                  <code class="subtle pull-right">default: [0, 0]</code>
+                </a>
+              </h4>
+            </div>
+            <div id="hotspotPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hotspot">
+              <div class="panel-body">
+                <code class="subtle">type: <strong>String</strong> or <strong>Array</strong></code>
+                <p>The hotspot location of the cursor can be defined using the <code>hotspot</code> option.  This allows you to configure the point that the actual click will emanate from.</p>
+
+                <p>The hotspot can be configured in two different ways: using an array containing the <code>[x, y]</code> coordinates (in pixels) of the hotspot, or by using a descriptive <code>string</code>.</p>
+                <p>If you're using an array of coordinates, the values will be clamped between 0 and the size of the cursor minus 1.  This is because the browser will default to <code>0, 0</code> for coordinates beyond the
+                boundaries of the cursor.</p>
+
+                <br>
+                <h5><strong>Example: defining the hotspot using an array</strong></h5>
+                <br>
+                {% highlight javascript %}$('body').awesomeCursor('pencil', {
+  hotspot: [5, 7]
+});{% endhighlight %}
+
+                <br>
+                <h5><strong>Example: defining the hotspot using a descriptive string</strong></h5>
+                <p>The strings 'bottom', 'top', 'left', 'right' and 'center' are recognised.  These values can be combined by space-separating them; some examples are shown below:</p>
+                <ul>
+                  <li>'bottom left'</li>
+                  <li>'center'</li>
+                  <li>'center top'</li>
+                  <li>'center right'</li>
+                  <li>'top right'</li>
+                </ul>
+
+                <br>
+                {% highlight javascript %}$('body').awesomeCursor('pencil', {
+  hotspot: 'bottom left'
+});{% endhighlight %}
+                <br>
+
+                <h4><u>Try it now!</u></h4>
+                <form class="form-horizontal try" data-property="hotspot">
+                  <div class="control-group">
+                    <label for="hotspot" class="col-lg-1"><big><strong>Hotspot location:</strong></big>
+                    </label>
+                    <div class="col-lg-3">
+                      <select class="form-control" name="hotspot">
+                        <option>top left</option>
+                        <option>center top</option>
+                        <option>top right</option>
+                        <option>center left</option>
+                        <option>center</option>
+                        <option>center right</option>
+                        <option selected>bottom left</option>
+                        <option>center bottom</option>
+                        <option>bottom right</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+                <br>
+                <br>
+                <div class="well sub-well">
+                  <h5>Click below to test hotspot location:</h5>
+                  <canvas width="200" height="200"></canvas>
+                  <button class="btn btn-default clear-canvas"><i class="fa fa-eraser"></i> Clear</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flipping demo -->
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="flip">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#options-accordion" href="#flipPanel" aria-expanded="false" aria-controls="flip">
+                  Flip
+                  <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+                  <code class="subtle pull-right">default: ''</code>
+                </a>
+              </h4>
+            </div>
+            <div id="flipPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="flip">
+              <div class="panel-body">
+                <code class="subtle">type: <strong>String</strong></code>
+                <p>The cursor can be flipped horizontally, vertically, or in both directions by setting the <code>flip</code> option.</p>
+                <p>
+                  <code>flip</code> can be one of:
+                </p>
+
+                <ul>
+                  <li>horizontal</li>
+                  <li>vertical</li>
+                  <li>both</li>
+                </ul>
+
+                <p>To disable flipping, set <code>flip</code> to any falsy value (<code>false</code>, <code>null</code>, <code>''</code>, etc.).  All other
+                values will result in an <span class="text-danger"><strong>error being thrown</strong></span>.
+                </p>
+
+                <br>
+                {% highlight javascript %}$('body').awesomeCursor('pencil', {
+  flip: 'horizontal'
+});{% endhighlight %}
+
+                <br>
+                <h4><u>Try it now!</u></h4>
+                <form class="form-horizontal try" data-property="flip">
+                  <div class="control-group">
+                    <label for="flip" class="col-lg-1"><big><strong>Flip:</strong></big>
+                    </label>
+                    <div class="col-lg-3">
+                      <select class="form-control" name="flip">
+                        <option value="">none</option>
+                        <option value="horizontal" selected>horizontal</option>
+                        <option value="vertical">vertical</option>
+                        <option value="both">both</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rotating demo -->
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="rotate">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#options-accordion" href="#rotatePanel" aria-expanded="false" aria-controls="rotate">
+                  Rotate
+                  <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+                  <code class="subtle pull-right">default: 0</code>
+                </a>
+              </h4>
+            </div>
+            <div id="rotatePanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rotate">
+              <div class="panel-body">
+                <code class="subtle">type: <strong>Number</strong></code>
+                <p>The cursor can be rotated any number of degrees using the <code>rotate</code> option.</p>
+
+                <br>
+                {% highlight javascript %}$('body').awesomeCursor('pencil', {
+  rotate: 45
+});{% endhighlight %}
+
+                <br>
+                <h4><u>Try it now!</u></h4>
+                <form class="form-horizontal try" data-property="rotate">
+                  <div class="control-group">
+                    <label for="flip" class="col-lg-2"><big><strong>Rotation (in degrees):</strong></big>
+                    </label>
+                    <div class="col-lg-2 text-right">
+                      <input class="form-control" name="rotate" type="number" value="45" step="5" max="360" min="-360">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outline demo -->
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="outline">
+              <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#options-accordion" href="#outlinePanel" aria-expanded="false" aria-controls="outline">
+                  Outline
+                  <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+                  <code class="subtle pull-right">default: null</code>
+                </a>
+              </h4>
+            </div>
+            <div id="outlinePanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="outline">
+              <div class="panel-body">
+                <code class="subtle">type: <strong>String</strong></code>
+                <p>An outline can be applied to a cursor by setting the <code>outline</code> option to any valid CSS color string.</p>
+
+                <br>
+                {% highlight javascript %}$('body').awesomeCursor('pencil', {
+  outline: 'black'
+});{% endhighlight %}
+
+                <br>
+                <h4><u>Try it now!</u></h4>
+                <form class="form-horizontal try" data-property="outline">
+                  <div class="control-group">
+                    <label for="outline" class="col-lg-1"><big><strong>Outline color:</strong></big>
+                    </label>
+                    <div class="col-lg-3">
+                      <input class="form-control" name="outline" type="color" value="black">
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        <!-- Overriding defaults section -->
+        <div>
+          <h4 id="overriding-default-options">Overriding default options</h4>
+          <p>The default values for all options are exposed by <code class="subtle">$.fn.awesomeCursor.defaults</code>.  This means you can easily override default options:</p>
+
+          {% highlight javascript %}$.fn.awesomeCursor.defaults.color = 'white'; // Default color for all cursors is now white {% endhighlight %}
+        </div>
+
+        <!-- Alternative font section -->
+        <div>
+          <h4 id="using-different-fonts">Using a different icon font</h4>
+          <p>You may want to use an icon font other than FontAwesome for your cursors - this can be achieved using the <code class="subtle">font</code> option (as of <samp><a data-ga-category="github links"
+                  data-ga-label="release v0.1.0"
+                  href="https://github.com/jwarby/jquery-awesome-cursor/releases/tag/v0.1.0">
+                  v0.1.0</a></samp>).
+          <p>The <code class="subtle">font</code> option is an object, containing the font <code class="subtle">family</code> and <code class="subtle">cssClass</code>.  The example below demonstrates how to use <a href="http://typicons.com/">typicons</a>
+          as the icon font:
+
+          {% highlight javascript %}$('body').awesomeCursor('brush', {
+  font: {
+    family: 'typicons',
+    cssClass: 'typcn typcn-%s'
+  }
+});{% endhighlight %}
+
+          <ul>
+            <li>The <code class="subtle">family</code> option is the name of the font icon's family.  For FontAwesome, it's 'FontAwesome'; for typicons it's 'typicons'</li>
+            <li>The <code class="subtle">cssClass</code> option is the format of the replacement font icon's CSS classes, where <code class="subtle">%s</code> is the name of the icon passed as the first parameter to <code class="subtle">awesomeCursor</code>.  You can also
+              use a function instead of a string - the function receives the icon name as it's only parameter, and is expected to return the CSS class name for the icon, e.g.
+              {% highlight javascript %}
+font: {
+  family: 'typicons',
+  cssClass: function(iconName) {
+    return 'typcn typcn-' + iconName;
+  }
+}
+{% endhighlight %}
+            </li>
+          </ul>
+
+          <br>
+
+          <p>You can set an alternative font as the default in the same way you would <a href="#overriding-default-options">override other defaults</a>:</p>
+          {% highlight javascript %}$.fn.awesomeCursor.defaults.font = {
+  family: 'typicons',
+  cssClass: 'typcn typcn-%s'
+};{% endhighlight %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>

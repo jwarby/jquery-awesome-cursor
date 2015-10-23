@@ -1,0 +1,148 @@
+<section id="installation">
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Basic demo -->
+      <h2>Installation</h2>
+
+      <div class="panel-group" id="installation-accordion" role="tablist" aria-multiselectable="true">
+
+        <!-- via Bower -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="bower">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#installation-accordion" href="#bowerPanel" aria-expanded="false" aria-controls="bower">
+                via Bower <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+              </a>
+            </h4>
+          </div>
+          <div id="bowerPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bower">
+            <div class="panel-body">
+              <p>In your terminal:</p>
+              {% highlight bash %}
+              bower install jquery-awesome-cursor
+              {% endhighlight %}
+
+              <p>In your web page:</p>
+              {% highlight html %}
+<link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js"></script>
+              {% endhighlight %}
+            </div>
+          </div>
+        </div>
+
+        <!-- via npm -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="npm">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#installation-accordion" href="#npmPanel" aria-expanded="false" aria-controls="npm">
+                via npm <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+              </a>
+            </h4>
+          </div>
+          <div id="npmPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="npm">
+            <div class="panel-body">
+              <p>In your terminal:</p>
+              {% highlight bash %}npm install jquery-awesome-cursor{% endhighlight %}
+
+              <p>In your web page:</p>
+              {% highlight html %}
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js"></script></pre>
+              {% endhighlight %}
+            </div>
+          </div>
+        </div>
+
+        <!-- via download -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="download">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#installation-accordion" href="#downloadPanel" aria-expanded="false" aria-controls="download">
+                download <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+              </a>
+            </h4>
+          </div>
+          <div id="downloadPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="download">
+            <div class="panel-body">
+              <div class="alert alert-warning">
+                <p>The download links below are for the latest versions of the code, which <strong>may</strong> be unstable.</p>
+
+                <p>To view the latest <strong>stable</strong> release, and previous releases, please visit <strong>
+                  <a
+                    data-ga-category="github links"
+                    data-ga-label="release - previously 'home (via downloads section)'"
+                    href="https://github.com/jwarby/jquery-awesome-cursor/releases"
+                    >https://github.com/jwarby/jquery-awesome-cursor/releases</a>
+                </strong>.</p>
+              </div>
+
+              <p>Download just the script:</p>
+              <a
+                data-ga-category="download links"
+                data-ga-label="minified js"
+                class="btn btn-primary btn-lg"
+                href="https://raw.githubusercontent.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.min.js"
+                ><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;jquery.awesome-cursor.min.js (production)</a>
+              <a
+                data-ga-category="download links"
+                data-ga-label="development js"
+                class="btn btn-primary btn-lg"
+                href="https://raw.githubusercontent.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.js"
+                ><i class="fa fa-file-text"></i>&nbsp;&nbsp;jquery.awesome-cursor.js (development)</a>
+
+              <br><br>
+              <p>Or download an archive of the latest code:</p>
+              <a
+                data-ga-category="download links"
+                data-ga-label="zipball"
+                class="btn btn-primary btn-lg"
+                href="https://github.com/jwarby/jquery-awesome-cursor/zipball/master"
+                ><i class="fa fa-file-archive-o"></i>&nbsp;&nbsp;.zip</a>
+              <a
+                data-ga-category="download links"
+                data-ga-label="tarball"
+                class="btn btn-primary btn-lg"
+                href="https://github.com/jwarby/jquery-awesome-cursor/tarball/master"
+                ><i class="fa fa-file-archive-o"></i>&nbsp;&nbsp;.tar.gz</a>
+              <br>
+              <br>
+
+              <p>Then, in your web page:</p>
+              {% highlight html %}
+<link rel="stylesheet" href="/path/to/font-awesome.min.css">
+<script src="/path/to/jquery.min.js"></script>
+<script src="/path/to/jquery.awesome-cursor.min.js"></script></pre>
+              {% endhighlight %}
+            </div>
+          </div>
+        </div>
+
+        <!-- via rawgit cdn -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="rawgit-cdn">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#installation-accordion" href="#rawgit-cdnPanel" aria-expanded="false" aria-controls="rawgit-cdn">
+                RawGit CDN <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+              </a>
+            </h4>
+          </div>
+          <div id="rawgit-cdnPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rawgit-cdn">
+            <div class="panel-body">
+
+              <p>You could also use <a href="https://rawgit.com">RawGit</a>'s CDN:</p>
+              {% highlight html %}
+<link rel="stylesheet" href="path/to/font-awesome.min.css">
+<script src="path/to/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.min.js"></script></pre>
+              {% endhighlight %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

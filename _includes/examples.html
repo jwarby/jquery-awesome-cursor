@@ -1,0 +1,161 @@
+<section id="examples">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Examples</h2>
+
+      <p>Hover your cursor over the boxes to see the example cursors</p>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Page Features -->
+  <div class="row text-center">
+
+    <div class="col-md-4 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="example" id="example1"></div>
+        <div class="caption">
+          <h3>Blue Paper Plane With Top Right Hotspot</h3>
+          {% highlight javascript %}$('#example1')
+  .awesomeCursor('paper-plane', {
+    color: '#2cb2da',
+    hotspot: 'top right'
+  });{% endhighlight %}
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="example" id="example2"></div>
+        <div class="caption">
+          <h3>Big Green Paintbrush</h3>
+          {% highlight javascript %}$('#example2')
+  .awesomeCursor('paint-brush', {
+    color: '#34db33',
+    size: 32
+  });{% endhighlight %}
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="example" id="example3"></div>
+        <div class="caption">
+          <h3>Red Banned Circle With Centered Hotspot</h3>
+          {% highlight javascript %}$('#example3')
+  .awesomeCursor('ban', {
+    color: 'red',
+    size: 24,
+    hotspot: 'center'
+  });{% endhighlight %}
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="example" id="example4"></div>
+        <div class="caption">
+          <h3>Pink Horizontally Flipped Fighter Jet</h3>
+          {% highlight javascript %}$('#example4')
+  .awesomeCursor('fighter-jet', {
+    color: 'hotpink',
+    size: 24,
+    flip: 'horizontal'
+  });{% endhighlight %}
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="example" id="example5"></div>
+        <div class="caption">
+          <h3>Blue Rotated Hand</h3>
+          {% highlight javascript %}$('#example5')
+  .awesomeCursor('hand-o-up', {
+    color: 'skyblue',
+    size: 24,
+    rotate: 45
+  });{% endhighlight %}
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="example" id="example6"></div>
+        <div class="caption">
+          <h3>Green Pencil With Brown Outline</h3>
+          {% highlight javascript %}$('#example6')
+  .awesomeCursor('pencil', {
+    color: 'limegreen',
+    size: 24,
+    outline: 'brown'
+  });{% endhighlight %}
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row text-center">
+    <div class="col-md-6 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="example"><iframe src="{{ "/iframe.html" | prepend: site.baseurl }}" id="iframe"></iframe></div>
+        <div class="caption">
+          <h3>&lt;iframe&gt;</h3>
+          <p class="text-left">Wait for the <code class="subtle">&lt;iframe&gt;</code> to load, then set the cursor on the contents:</p>
+{% highlight javascript %}var $iframe = $('#iframe');
+$iframe.ready(function(e) {
+  $iframe.contents().find('img').awesomeCursor('map-marker', {
+    color: 'maroon',
+    size: 32,
+    outline: '#ccc',
+    hotspot: 'center bottom'
+  });
+});{% endhighlight %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 hero-feature">
+      <div class="thumbnail">
+        <div class="example">
+          <div id="google-maps"></div>
+        </div>
+        <div class="caption">
+          <h3>Google Maps</h3>
+          <p class="text-left">Using the <a href="https://developers.google.com/maps/documentation/javascript/" data-ga-label="google maps api docs"data-ga-category="external links">Google Maps Javascript API v3</a>.</p>
+{% highlight javascript %}var map = new google.maps.Map($('#google-maps')[0], {
+  center: { lat: 37.544494, lng: 138.276398 },
+  zoom: 8
+});
+
+google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
+  $('#google-maps').find('div').awesomeCursor('location-arrow', {
+    size: 22,
+    color: 'orange',
+    flip: 'horizontal'
+  });
+});{% endhighlight %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.row -->
+</section>

@@ -1,0 +1,13 @@
+# Site settings
+title: Awesome Cursor -  a jQuery plugin for using FontAwesome icons as custom CSS cursors
+email: james.duncan.1991@googlemail.com
+description: > # this means to ignore newlines until "baseurl:"
+  A jQuery plugin for using FontAwesome icons as custom CSS cursors.  Use any FontAwesome icon, in any color, and any size.
+  Includes support for using a different icon font too!
+baseurl: "/jquery-awesome-cursor/"
+twitter_username: warby_
+github_username:  jwarby
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
