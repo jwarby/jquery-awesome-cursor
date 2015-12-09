@@ -47,5 +47,6 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "main": "dist/jquery.awesome-cursor"
 }
