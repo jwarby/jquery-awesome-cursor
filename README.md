@@ -42,7 +42,7 @@ npm install jquery-awesome-cursor
 <script src="node_modules/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
 ```
 
-#### manual installation
+#### Manual installation
 
 Download the [production version][min] or the [development version][max].
 
