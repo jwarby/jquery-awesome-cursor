@@ -143,18 +143,25 @@
         })(iconName, options.font.cssClass),
         srcElement = $('<i />', {
           class: cssClass,
-          style: 'position: absolute; left: -9999px; top: -9999px;'
-        }),
-        canvas = $('<canvas />')[0],
-        canvasSize = options.size,
-        hotspotOffset, unicode, dataURL, context;
+          style: 'display: inline; font-size: ' + options.size + 'px;'
+        });
+
+      // Wrap the icon inside an absolute element to remove it from doc flow
+      var wrapper = $('<div />', {
+        style: 'position: absolute; left: -9999px; top: -9999px;'
+      }).append(srcElement);
 
       // Render element to the DOM, otherwise `getComputedStyle` will not work
-      $('body').append(srcElement);
+      $('body').append(wrapper);
 
-      // Get the unicode value of the icon
-      unicode = window.getComputedStyle(srcElement[0], ':before')
-          .getPropertyValue('content');
+      // Get the unicode value and dimensions of the icon
+      var unicode = window.getComputedStyle(srcElement[0], ':before')
+          .getPropertyValue('content'),
+        clientRect = srcElement[0].getBoundingClientRect();
+
+      var canvas = $('<canvas />')[0],
+        canvasSize = Math.max(clientRect.width, clientRect.height),
+        hotspotOffset, dataURL, context;
 
       // Remove the source element from the DOM
       srcElement.remove();
