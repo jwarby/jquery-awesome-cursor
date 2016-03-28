@@ -633,4 +633,18 @@
       }
     );
   });
+
+  asyncTest('does not clip large icons', function() {
+    expect(1);
+
+    this.elems.awesomeCursor('usb', {
+      size: 32,
+      color: 'pink'
+    }).cursorMatchesImage(
+      'expected/pink-usb-32.png', function(matches) {
+        ok(matches);
+        start();
+      }
+    );
+  });
 }(this, jQuery));
