@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-awesome-cursor": "~0.1.4",
+    "jquery-awesome-cursor": "~0.2.0",
     "clipboard": "~1.4.2"
   }
 }

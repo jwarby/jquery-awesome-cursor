@@ -1,6 +1,6 @@
 {
   "name": "jquery-awesome-cursor",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "jQuery plugin for using FontAwesome icons as custom CSS cursors",
   "keywords": [
     "jquery-plugin",
@@ -42,14 +42,14 @@
     "qunit": "1.x",
     "jquery": "2.x"
   },
-  "_release": "0.1.4",
+  "_release": "0.2.0",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.4",
-    "commit": "776d92b268bbe12dc931e9970f5456982dc9b75e"
+    "tag": "v0.2.0",
+    "commit": "c7700acf7cebcb9e4417af03df5d8d1a9290a855"
   },
   "_source": "git://github.com/jwarby/jquery-awesome-cursor.git",
-  "_target": "~0.1.4",
+  "_target": "0.2.0",
   "_originalSource": "jquery-awesome-cursor",
   "_direct": true
 }
