@@ -321,6 +321,8 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
+- `v0.2.0` - `28th Mar 2016` - Bug fix for certain icons getting clipped when used as a cursor ([#19](https://github.com/jwarby/jquery-awesome-cursor/issues/19))
+- `v0.1.5` - ` 9th Dec 2015` - Add `main` to package.json, allowing plugin to be used properly when installed via npm and used with tools such as Browserify
 - `v0.1.4` - `23rd Oct 2015` - Remove minor version constraints on bower/npm dependencies
 - `v0.1.3` - `19th Oct 2015` - Bug fix for Chrome not updating cursor if cursor had already been set, run tests using Karma, using SPDX format for "license" field in package.json
 - `v0.1.2` - `25th May 2015` - Bug fix for rendering artifacts in Chrome ([#14](https://github.com/jwarby/jquery-awesome-cursor/issues/14))
