@@ -10,15 +10,13 @@
     "css"
   ],
   "homepage": "https://jwarby.github.io/jquery-awesome-cursor",
-  "bugs": "http://github.com/jwarby/jquery-awesome-cursor/issues",
-  "author": {
-    "name": "James Warwood",
-    "email": "james.duncan.1991@googlemail.com",
-    "url": "https://github.com/jwarby"
+  "bugs": {
+    "url": "http://github.com/jwarby/jquery-awesome-cursor/issues"
   },
+  "author": "James Warwood <warwood.aj@gmail.com> (https://github.com/jwarby)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jwarby/jquery-awesome-cursor.git"
+    "url": "git+https://github.com/jwarby/jquery-awesome-cursor.git"
   },
   "license": "MIT",
   "main": "dist/jquery.awesome-cursor.js",
