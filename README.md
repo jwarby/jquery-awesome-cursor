@@ -335,6 +335,7 @@ See [CONTRIBUTING.md](https://github.com/jwarby/jquery-awesome-cursor/blob/maste
 
 ## Release History
 
+- `v0.3.1` - `23rd Apr 2016` - Hotfix - change TravisCI node test versions to v4 and v5; add dotfiles back into bower ignore field
 - `v0.3.0` - `23rd Apr 2016` - Make FontAwesome an optional dependency ([#21](https://github.com/jwarby/jquery-awesome-cursor/issues/21)); add an .npmignore file, update bower ignore field; updated devDependencies
 - `v0.2.0` - `28th Mar 2016` - Bug fix for certain icons getting clipped when used as a cursor ([#19](https://github.com/jwarby/jquery-awesome-cursor/issues/19))
 - `v0.1.5` - ` 9th Dec 2015` - Add `main` to package.json, allowing plugin to be used properly when installed via npm and used with tools such as Browserify
