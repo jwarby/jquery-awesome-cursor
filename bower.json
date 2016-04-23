@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-awesome-cursor": "~0.3.0",
+    "jquery-awesome-cursor": "jwarby/jquery-awesome-cursor#^0.3.1",
     "clipboard": "~1.4.2"
   },
   "private": true
