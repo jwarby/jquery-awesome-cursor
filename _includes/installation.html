@@ -6,6 +6,32 @@
 
       <div class="panel-group" id="installation-accordion" role="tablist" aria-multiselectable="true">
 
+        <!-- via npm -->
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="npm">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#installation-accordion" href="#npmPanel" aria-expanded="false" aria-controls="npm">
+                via npm (recommended) <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
+              </a>
+            </h4>
+          </div>
+          <div id="npmPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="npm">
+            <div class="panel-body">
+              <p>In your terminal:</p>
+              {% highlight bash %}npm install jquery-awesome-cursor{% endhighlight %}
+
+              <p>In your web page:</p>
+              {% highlight html %}
+<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js"></script></pre>
+              {% endhighlight %}
+
+              <p>If you plan on using <code class="subtle">jquery-awesome-cursor</code> with a <a href="#using-different-fonts">different icon font</a>, you can skip the FontAwesome dependency:</p>
+              {% highlight bash %}npm install --no-optional jquery-awesome-cursor{% endhighlight %}
+            </div>
+          </div>
+        </div>
         <!-- via Bower -->
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="bower">
@@ -28,33 +54,16 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js"></script>
               {% endhighlight %}
-            </div>
-          </div>
-        </div>
 
-        <!-- via npm -->
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="npm">
-            <h4 class="panel-title">
-              <a class="collapsed" data-toggle="collapse" data-parent="#installation-accordion" href="#npmPanel" aria-expanded="false" aria-controls="npm">
-                via npm <i class="fa fa-chevron-circle-down pull-right"></i><i class="fa fa-chevron-circle-up pull-right"></i>
-              </a>
-            </h4>
-          </div>
-          <div id="npmPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="npm">
-            <div class="panel-body">
-              <p>In your terminal:</p>
-              {% highlight bash %}npm install jquery-awesome-cursor{% endhighlight %}
-
-              <p>In your web page:</p>
-              {% highlight html %}
-<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="node_modules/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js"></script></pre>
+              <p><strong>IMPORTANT: As of <code class="subtle">v0.3.0</code>, FontAwesome is considered an optional dependency.  Therefore, you <em>must</em> install it yourself!</strong></p>
+              {% highlight bash %}
+              bower install font-awesome
               {% endhighlight %}
+
             </div>
           </div>
         </div>
+
 
         <!-- via download -->
         <div class="panel panel-default">
