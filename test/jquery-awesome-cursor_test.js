@@ -1,29 +1,23 @@
-/* global asyncTest,deepEqual,equal,expect,ok,start,strictEqual,test,throws */
+/* global QUnit */
+
 (function(global, $) {
   'use strict';
+
+  QUnit.test('force fonts to load', function(assert) {
+    assert.expect(0);
+
+    $('body')
+      .append('<i class="fa fa-pencil"></i>')
+      .append('<i class="act act-pencil"></i>')
+    ;
+
+    setTimeout(assert.async(), 500);
+  });
 
   /* Regular expresssion which defines the expected value of the CSS cursor
    * property after the plugin has been called on an element
    */
   var CURSOR_REGEX = /^url\((?:")?data:image\/png;base64,.*\)(?: 0 0)?, auto$/;
-
-  /**
-   * Given a function, ensure that function only ever runs once.
-   *
-   * @param {Function} fn  The function that is to be restricted so it can only
-   *                       run once
-   *
-   * @param {Function} a new function which can be called multiple times, but
-   *                   will only ever execute the input `fn` once
-   */
-  var once = function(fn) {
-    return function() {
-      if (!fn.hasRun) {
-        fn.hasRun = true;
-        return fn.apply(this, arguments);
-      }
-    };
-  };
 
   /**
    * Extract the cursor's x, y hotspot from the specified element.
@@ -118,17 +112,6 @@
   }
 
   /**
-   * @HACK
-   *
-   * Wait for a while to allow fonts to load.
-   */
-  function waitForFonts() {
-    global.QUnit.stop();
-
-    setTimeout(global.QUnit.start, 2000);
-  }
-
-  /**
    * Check if the supplied image matches the cursor set on this element.
    * If element is not provided, it defaults to the body element.
    *
@@ -167,35 +150,12 @@
     });
   };
 
-  /*
-    ======== A Handy Little QUnit Reference ========
-    http://api.qunitjs.com/
+  QUnit.module('jQuery#awesomeCursor', {
 
-    Test methods:
-      module(name, {[setup][ ,teardown]})
-      test(name, callback)
-      expect(numberOfAssertions)
-      stop(increment)
-      start(decrement)
-    Test assertions:
-      ok(value, [message])
-      equal(actual, expected, [message])
-      notEqual(actual, expected, [message])
-      deepEqual(actual, expected, [message])
-      notDeepEqual(actual, expected, [message])
-      strictEqual(actual, expected, [message])
-      notStrictEqual(actual, expected, [message])
-      throws(block, [expected], [message])
-  */
-
-  module('jQuery#awesomeCursor', {
     // This will run before each test in this module.
-    setup: function() {
-
-      // On first run, allow some time for fonts to finish loading
-      once(waitForFonts)();
-
+    beforeEach: function() {
       $('#qunit-fixture').remove();
+
       var $qunit = $('<div />', {
         id: 'qunit'
       });
@@ -217,32 +177,32 @@
     }
   });
 
-  test('is chainable', function() {
-    expect(1);
+  QUnit.test('is chainable', function(assert) {
+    assert.expect(1);
 
-    strictEqual(
+    assert.strictEqual(
       this.elems.awesomeCursor('pencil'), this.elems, 'should be chainable'
     );
   });
 
-  test('css is correctly set', function() {
-    expect(1);
+  QUnit.test('css is correctly set', function(assert) {
+    assert.expect(1);
     this.elems.awesomeCursor('pencil');
 
-    ok(
+    assert.ok(
       CURSOR_REGEX.test(this.elems.css('cursor')),
       '\'' + this.elems.css('cursor') + '\' does not match expected RegExp'
     );
   });
 
-  test('throws an error if name parameter is missing or invalid', function() {
+  QUnit.test('throws an error if name parameter is missing or invalid', function(assert) {
     var subjects = ['', 0, -1, false, true, {}, [], null],
       that = this;
 
-    expect(subjects.length);
+    assert.expect(subjects.length);
 
     subjects.forEach(function(subject) {
-      throws(
+      assert.throws(
         function() {
           that.elems.awesomeCursor(subject);
         },
@@ -251,15 +211,15 @@
     });
   });
 
-  test('`hotspot` value can be a string', function() {
-    expect(1);
+  QUnit.test('`hotspot` value can be a string', function(assert) {
+    assert.expect(1);
 
-    ok(this.elems.awesomeCursor('pencil', {
+    assert.ok(this.elems.awesomeCursor('pencil', {
       hotspot: 'bottom left'
     }));
   });
 
-  test('`hotspot` string values are correctly parsed', function() {
+  QUnit.test('`hotspot` string values are correctly parsed', function(assert) {
     var size = $.fn.awesomeCursor.defaults.size,
       subjects = {
         'top left': [0, 0],
@@ -274,7 +234,7 @@
       },
       hotspot;
 
-    expect(Object.keys(subjects).length);
+    assert.expect(Object.keys(subjects).length);
 
     for (var s in subjects) {
       this.elems.awesomeCursor('pencil', {
@@ -282,14 +242,14 @@
       });
 
       hotspot = extractHotspot(this.elems);
-      deepEqual(hotspot, subjects[s]);
+      assert.deepEqual(hotspot, subjects[s]);
     }
   });
 
-  test('`hotspot` values get clamped between 0 and cursor size - 1', function() {
+  QUnit.test('`hotspot` values get clamped between 0 and cursor size - 1', function(assert) {
     var hotspot;
 
-    expect(3);
+    assert.expect(3);
 
     this.elems.awesomeCursor('pencil', {
       size: 32,
@@ -298,15 +258,28 @@
 
     hotspot = extractHotspot(this.elems);
 
-    ok(hotspot);
-    equal(hotspot[0], 0);
-    equal(hotspot[1], 31);
+    assert.ok(hotspot);
+    assert.equal(hotspot[0], 0);
+    assert.equal(hotspot[1], 31);
   });
 
-  asyncTest('can set the color of a cursor', function() {
-    var testsRemaining = 2;
+  QUnit.test('can set the color of a cursor', function(assert) {
+    var done = assert.async();
 
-    expect(testsRemaining);
+    assert.expect(2);
+
+    var next = function() {
+      this.elems
+        .awesomeCursor('flag-checkered', {
+          color: '#00ff00',
+          size: 18
+        })
+        .cursorMatchesImage(
+          'expected/lime-flag-18.png', function(matches) {
+            assert.ok(matches);
+            done();
+        });
+    }.bind(this);
 
     this.elems
       .awesomeCursor('pencil', {
@@ -315,30 +288,15 @@
       })
       .cursorMatchesImage(
         'expected/red-pencil-18.png', function(matches) {
-          ok(matches);
-          testsRemaining--;
-          if (!testsRemaining) {
-            start();
-          }
+          assert.ok(matches);
+          next();
       });
 
-    this.elems
-      .awesomeCursor('flag-checkered', {
-        color: '#00ff00',
-        size: 18
-      })
-      .cursorMatchesImage(
-        'expected/lime-flag-18.png', function(matches) {
-          ok(matches);
-          testsRemaining--;
-          if (!testsRemaining) {
-            start();
-        }
-      });
   });
 
-  asyncTest('can set the size of a cursor', function() {
-    expect(1);
+  QUnit.test('can set the size of a cursor', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems
       .awesomeCursor('globe', {
@@ -347,13 +305,14 @@
       })
       .cursorMatchesImage(
         'expected/black-globe-32.png', function(matches) {
-          ok(matches);
-          start();
+          assert.ok(matches);
+          done();
       });
   });
 
-  asyncTest('can set the size of a cursor using a string value', function() {
-    expect(1);
+  QUnit.test('can set the size of a cursor using a string value', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems
       .awesomeCursor('desktop', {
@@ -362,13 +321,14 @@
       })
       .cursorMatchesImage(
         'expected/black-desktop-22.png', function(matches) {
-          ok(matches);
-          start();
+          assert.ok(matches);
+          done();
       });
   });
 
-  asyncTest('can flip a cursor horizontally', function() {
-    expect(1);
+  QUnit.test('can flip a cursor horizontally', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems
       .awesomeCursor('pencil', {
@@ -378,13 +338,14 @@
       })
       .cursorMatchesImage(
         'expected/red-pencil-flip-h-18.png', function(matches) {
-          ok(matches);
-          start();
+          assert.ok(matches);
+          done();
       });
   });
 
-  asyncTest('can flip a cursor vertically', function() {
-    expect(1);
+  QUnit.test('can flip a cursor vertically', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems
       .awesomeCursor('flag-checkered', {
@@ -394,13 +355,14 @@
       })
       .cursorMatchesImage(
         'expected/lime-flag-flip-v-18.png', function(matches) {
-          ok(matches);
-          start();
+          assert.ok(matches);
+          done();
       });
   });
 
-  asyncTest('can flip a cursor vertically and horizontally', function() {
-    expect(1);
+  QUnit.test('can flip a cursor vertically and horizontally', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems
       .awesomeCursor('globe', {
@@ -410,13 +372,14 @@
       })
       .cursorMatchesImage(
         'expected/black-globe-flip-b-32.png', function(matches) {
-          ok(matches);
-          start();
+          assert.ok(matches);
+          done();
       });
   });
 
-  asyncTest('can rotate a cursor', function() {
-    expect(2);
+  QUnit.test('can rotate a cursor', function(assert) {
+    var done = assert.async();
+    assert.expect(2);
 
     var next = function() {
       this.elems.awesomeCursor('wrench', {
@@ -425,8 +388,8 @@
         rotate: -45
       }).cursorMatchesImage(
         'expected/red-wrench-rotate-45.png', function(matches) {
-          ok(matches);
-          start();
+          assert.ok(matches);
+          done();
         }
       );
     }.bind(this);
@@ -437,15 +400,16 @@
       rotate: 45
     }).cursorMatchesImage(
       'expected/black-pencil-rotate45.png', function(matches) {
-        ok(matches);
+        assert.ok(matches);
         next();
       }
     );
 
   });
 
-  asyncTest('can rotate and flip a cursor', function() {
-    expect(2);
+  QUnit.test('can rotate and flip a cursor', function(assert) {
+    var done = assert.async();
+    assert.expect(2);
 
     var next = function() {
       this.elems.awesomeCursor('pencil', {
@@ -455,8 +419,8 @@
         flip: 'both'
       }).cursorMatchesImage(
         'expected/green-pencil-rotate45-flip-b.png', function(matches) {
-          ok(matches);
-          start();
+          assert.ok(matches);
+          done();
         }
       );
     }.bind(this);
@@ -468,14 +432,14 @@
       flip: 'horizontal'
     }).cursorMatchesImage(
       'expected/green-pencil-rotate45-flip-h.png', function(matches) {
-        ok(matches);
+        assert.ok(matches);
         next();
       }
     );
 
   });
 
-  test('hotspot gets translated when cursor rotated', function() {
+  QUnit.test('hotspot gets translated when cursor rotated', function(assert) {
     var size = $.fn.awesomeCursor.defaults.size,
       newSize = Math.ceil(Math.sqrt(
         Math.pow(size, 2) + Math.pow(size, 2)
@@ -485,7 +449,7 @@
       },
       hotspot;
 
-    expect(Object.keys(subjects).length);
+    assert.expect(Object.keys(subjects).length);
 
     for (var s in subjects) {
       this.elems.awesomeCursor('pencil', {
@@ -494,12 +458,13 @@
       });
 
       hotspot = extractHotspot(this.elems);
-      deepEqual(hotspot, subjects[s]);
+      assert.deepEqual(hotspot, subjects[s]);
     }
   });
 
-  asyncTest('can add outline to cursor', function() {
-    expect(1);
+  QUnit.test('can add outline to cursor', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems.awesomeCursor('paint-brush', {
       color: 'white',
@@ -507,20 +472,21 @@
       outline: 'black'
     }).cursorMatchesImage(
       'expected/black-outline-paint-brush-32.png', function(matches) {
-        ok(matches);
-        start();
+        assert.ok(matches);
+        done();
       }
     );
   });
 
-  asyncTest('can add outlines to flipped cursors', function() {
-    expect(3);
+  QUnit.test('can add outlines to flipped cursors', function(assert) {
+    var done = assert.async();
+    assert.expect(3);
 
     var runTests = function(tests) {
       var current = tests.pop();
 
       if (!current) {
-        start();
+        done();
       } else {
 
         this.elems.awesomeCursor('paint-brush', {
@@ -531,7 +497,7 @@
         }).cursorMatchesImage(
           'expected/black-outline-paint-brush-flip-' + current + '-32.png',
               function(matches) {
-            ok(matches);
+            assert.ok(matches);
             runTests(tests);
           }
         );
@@ -542,8 +508,9 @@
 
   });
 
-  asyncTest('can add outline to rotated cursor', function() {
-    expect(1);
+  QUnit.test('can add outline to rotated cursor', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems.awesomeCursor('pencil', {
       color: 'skyblue',
@@ -552,14 +519,15 @@
       outline: 'blue'
     }).cursorMatchesImage(
       'expected/blue-outline-paint-brush-rotate45.png', function(matches) {
-        ok(matches);
-        start();
+        assert.ok(matches);
+        done();
       }
     );
   });
 
-  asyncTest('can add outline to rotated and flipped cursor', function() {
-    expect(1);
+  QUnit.test('can add outline to rotated and flipped cursor', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems.awesomeCursor('pencil', {
       color: 'skyblue',
@@ -569,14 +537,15 @@
       flip: 'horizontal'
     }).cursorMatchesImage(
       'expected/blue-outline-paint-brush-rotate45-flip-h.png', function(matches) {
-        ok(matches);
-        start();
+        assert.ok(matches);
+        done();
       }
     );
   });
 
-  asyncTest('can use a custom font instead of FontAwesome', function() {
-    expect(1);
+  QUnit.test('can use a custom font instead of FontAwesome', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems.awesomeCursor('pencil', {
       font: {
@@ -587,14 +556,15 @@
       color: 'black'
     }).cursorMatchesImage(
       'expected/awesome-cursor-test-font/black-pencil-36.png', function(matches) {
-        ok(matches);
-        start();
+        assert.ok(matches);
+        done();
       }
     );
   });
 
-  asyncTest('can apply effects to custom font cursors', function() {
-    expect(1);
+  QUnit.test('can apply effects to custom font cursors', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems.awesomeCursor('brush', {
       font: {
@@ -608,14 +578,15 @@
       flip: 'horizontal'
     }).cursorMatchesImage(
       'expected/awesome-cursor-test-font/green-brush-30-effects.png', function(matches) {
-        ok(matches);
-        start();
+        assert.ok(matches);
+        done();
       }
     );
   });
 
-  asyncTest('can set custom font `cssClass` using a function', function() {
-    expect(1);
+  QUnit.test('can set custom font `cssClass` using a function', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems.awesomeCursor('pencil', {
       font: {
@@ -628,22 +599,23 @@
       color: 'black'
     }).cursorMatchesImage(
       'expected/awesome-cursor-test-font/black-pencil-36.png', function(matches) {
-        ok(matches);
-        start();
+        assert.ok(matches);
+        done();
       }
     );
   });
 
-  asyncTest('does not clip large icons', function() {
-    expect(1);
+  QUnit.test('does not clip large icons', function(assert) {
+    var done = assert.async();
+    assert.expect(1);
 
     this.elems.awesomeCursor('usb', {
       size: 32,
       color: 'pink'
     }).cursorMatchesImage(
       'expected/pink-usb-32.png', function(matches) {
-        ok(matches);
-        start();
+        assert.ok(matches);
+        done();
       }
     );
   });
