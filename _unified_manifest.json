@@ -51,7 +51,10 @@
     "engines": {
       "node": ">=0.10.0"
     },
-    "main": "dist/jquery.awesome-cursor"
+    "main": "dist/jquery.awesome-cursor",
+    "scripts": {
+      "test": "grunt test"
+    }
   },
   "_bower.json_": {
     "main": "dist/jquery.awesome-cursor.js",
