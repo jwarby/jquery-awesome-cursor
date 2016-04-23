@@ -60,16 +60,14 @@
   "_bower.json_": {
     "main": "dist/jquery.awesome-cursor.js",
     "ignore": [
-      "**/.*",
       "node_modules",
       "bower_components",
       "test",
-      "package.json",
-      "awesome-cursor.jquery.json",
-      "_unified_manifest.json",
-      "*.md",
       "src",
-      "Gruntfile.js"
+      "package.json",
+      "_unified_manifest.json",
+      "Gruntfile.js",
+      "karma.conf.js"
     ],
     "dependencies": {
       "jquery": "2.x"
