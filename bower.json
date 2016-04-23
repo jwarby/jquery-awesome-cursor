@@ -2,7 +2,7 @@
   "name": "jquery-awesome-cursor-pages",
   "version": "2.0.0",
   "authors": [
-    "James Warwood <james.duncan.1991@googlemail.com>"
+    "James Warwood <warwood.aj@gmail.com>"
   ],
   "description": "jQuery Awesome Cursor documentation and demo site",
   "license": "MIT",
@@ -14,7 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-awesome-cursor": "~0.2.0",
+    "jquery-awesome-cursor": "~0.3.0",
     "clipboard": "~1.4.2"
-  }
+  },
+  "private": true
 }
