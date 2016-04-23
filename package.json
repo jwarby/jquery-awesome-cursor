@@ -41,8 +41,10 @@
     "load-grunt-tasks": "^3.1.0",
     "time-grunt": "^1.0.0"
   },
+  "optionalDependencies": {
+    "font-awesome": "4.x"
+  },
   "peerDependencies": {
-    "font-awesome": "4.x",
     "jquery": "2.x"
   },
   "engines": {

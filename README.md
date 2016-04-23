@@ -18,19 +18,7 @@ Requires [jQuery](http://jquery.com) and [FontAwesome](http://fontawesome.io).
 
 ### Installing the plugin
 
-#### via `bower`
-
-```shell
-bower install jquery-awesome-cursor
-```
-
-```html
-<link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" type="text/css">
-<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-<script src="bower_components/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
-```
-
-#### via `npm`
+#### via `npm` (recommended)
 
 ```shell
 npm install jquery-awesome-cursor
@@ -42,9 +30,35 @@ npm install jquery-awesome-cursor
 <script src="node_modules/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
 ```
 
+From `v0.3.0` onwards, FontAwesome is marked as an optional dependency.  If you plan on using `jquery-awesome-cursor`
+with a different icon font, you can skip installation of any optional dependencies like this:
+
+```shell
+npm install --no-optional jquery-awesome-cursor
+```
+
+##### IMPORTANT: npm@3 won't install `peerDependencies` anymore, so if you haven't already installed jQuery you will get an `UNMET PEER DEPENDENCY` warning when you install.  To fix, just do `npm install jquery`.
+
+#### via `bower`
+
+```shell
+bower install jquery-awesome-cursor
+```
+
+```html
+<link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" type="text/css">
+<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="bower_components/jquery-awesome-cursor/dist/jquery.awesome-cursor.min.js" type="text/javascript"></script>
+```
+##### IMPORTANT: from `v0.3.0` onwards, you need to bring your own FontAwesome!  FontAwesome is considered an optional dependency, but Bower doesn't support optional dependencies - so you must install FontAwesome yourself. See [#21](https://github.com/jwarby/jquery-awesome-cursor/issues/21).
+
+```shell
+bower install font-awesome
+```
+
 #### Manual installation
 
-Download the [production version][min] or the [development version][max].
+Download the [production version][min] or the [development version][max]. You will need to download and install FontAwesome manually as well.
 
 [min]: https://raw.githubusercontent.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.min.js
 [max]: https://raw.githubusercontent.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.js

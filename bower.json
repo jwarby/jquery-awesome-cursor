@@ -35,8 +35,7 @@
     "Gruntfile.js"
   ],
   "dependencies": {
-    "jquery": "2.x",
-    "fontawesome": "4.x"
+    "jquery": "2.x"
   },
   "devDependencies": {
     "qunit": "1.x",
