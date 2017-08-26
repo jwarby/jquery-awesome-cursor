@@ -3,6 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/jwarby/jquery-awesome-cursor.png?branch=master)](https://travis-ci.org/jwarby/jquery-awesome-cursor)
 [![Dependency Status](https://david-dm.org/jwarby/jquery-awesome-cursor/peer-status.svg?style=flat)](https://david-dm.org/jwarby/jquery-awesome-cursor#info=peerDependencies)
 [![devDependency Status](https://david-dm.org/jwarby/jquery-awesome-cursor/dev-status.svg?style=flat)](https://david-dm.org/jwarby/jquery-awesome-cursor#info=devDependencies)
+[![CDNJS version](https://img.shields.io/cdnjs/v/jquery-awesome-cursor.svg)](https://cdnjs.com/libraries/jquery-awesome-cursor)
 
 A jQuery plugin for using FontAwesome icons as custom CSS cursors.  Also supports using a custom icon font instead of FontAwesome.
 
